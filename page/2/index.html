@@ -1,9 +1,738 @@
-extends partial/layout
-block content
-	.autopagerize_page_element: .content
-		- page.posts.each(function (item) {
-			include mixins
-			+make_post(item, false)
-		- })
-		include mixins
-		+make_pager(__('prev'), __('next'))
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PlumLi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="PlumLi">
+<meta property="og:url" content="https://plumliil.github.io/page/2/index.html">
+<meta property="og:site_name" content="PlumLi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="PlumLi">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="PlumLi" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PlumLi</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Plumliil.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-认识Ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/%E8%AE%A4%E8%AF%86Ajax/" class="article-date">
+  <time datetime="2021-08-15T15:51:34.000Z" itemprop="datePublished">2021-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ajax/">Ajax</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/%E8%AE%A4%E8%AF%86Ajax/">认识Ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Ajax应用场景"><a href="#Ajax应用场景" class="headerlink" title="Ajax应用场景"></a>Ajax应用场景</h2><h5 id="1-页面上拉加载更多数据"><a href="#1-页面上拉加载更多数据" class="headerlink" title="1.页面上拉加载更多数据"></a>1.页面上拉加载更多数据</h5><h5 id="2-列表数据无刷新分页"><a href="#2-列表数据无刷新分页" class="headerlink" title="2.列表数据无刷新分页"></a>2.列表数据无刷新分页</h5><h5 id="3-表单项离开焦点数据验证"><a href="#3-表单项离开焦点数据验证" class="headerlink" title="3.表单项离开焦点数据验证"></a>3.表单项离开焦点数据验证</h5><h5 id="4-搜索框提示文字下拉列表"><a href="#4-搜索框提示文字下拉列表" class="headerlink" title="4.搜索框提示文字下拉列表"></a>4.搜索框提示文字下拉列表</h5><h2 id="Ajax运行环境"><a href="#Ajax运行环境" class="headerlink" title="Ajax运行环境"></a>Ajax运行环境</h2><h5 id="Ajax技术需要运行在网站环境下才会生效，可用Node创建的服务器作为网站服务器"><a href="#Ajax技术需要运行在网站环境下才会生效，可用Node创建的服务器作为网站服务器" class="headerlink" title="Ajax技术需要运行在网站环境下才会生效，可用Node创建的服务器作为网站服务器"></a>Ajax技术需要运行在网站环境下才会生效，可用Node创建的服务器作为网站服务器</h5><h2 id="Ajax运行原理"><a href="#Ajax运行原理" class="headerlink" title="Ajax运行原理"></a>Ajax运行原理</h2><h5 id="普通"><a href="#普通" class="headerlink" title="普通"></a>普通</h5><p><strong>浏览器端——-请求——-&gt;服务器端</strong></p>
+<p><strong>浏览器端&lt;——响应——-服务器端</strong></p>
+<p>​           <strong>开发人员不可控</strong></p>
+<h5 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h5><p><strong>浏览器端——– 创建——-&gt;Ajax——-请求——-&gt;服务器端</strong></p>
+<p><strong>浏览器端&lt;——– 响应——Ajax&lt;——-响应——-服务器端</strong></p>
+<p>​                            <strong>开发人员可控</strong></p>
+<h5 id="ajax相当于浏览器发送请求与接收响应的代理人，以实现不影响用户浏览页面的情况下局部更新页面数据，从而提高用户体验"><a href="#ajax相当于浏览器发送请求与接收响应的代理人，以实现不影响用户浏览页面的情况下局部更新页面数据，从而提高用户体验" class="headerlink" title="ajax相当于浏览器发送请求与接收响应的代理人，以实现不影响用户浏览页面的情况下局部更新页面数据，从而提高用户体验"></a>ajax相当于浏览器发送请求与接收响应的代理人，以实现不影响用户浏览页面的情况下局部更新页面数据，从而提高用户体验</h5>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/%E8%AE%A4%E8%AF%86Ajax/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/%E8%AE%A4%E8%AF%86Ajax/" data-id="cl1apwp03002ywcu06zlkd2jq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ajax函数封装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Ajax%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" class="article-date">
+  <time datetime="2021-08-15T15:39:11.000Z" itemprop="datePublished">2021-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ajax/">Ajax</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Ajax%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/">Ajax函数封装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ajax(&#123;</span><br><span class="line">    <span class="attr">url</span>:<span class="string">&#x27;http://localhost:3000/xxx&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>:&#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="number">20</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">success</span>:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Ajax%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Ajax%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" data-id="cl1apwoyw0001wcu0d8xc2870" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue学习之认识deep" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86deep/" class="article-date">
+  <time datetime="2021-08-05T15:38:41.000Z" itemprop="datePublished">2021-08-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86deep/">Vue学习之认识/deep/</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>elementui使用中deep的用法/deep/</p>
+<p>在做第一个vue项目时遇到了一个问题，在使用elementui中的Drawer（抽屉组件时），想要修改Drawer的标题，尝试着修改title的样式，但没有效果，尝试了很多方法，最后用/deep/解决了问题<br>通过深度选择 .el-drawer 中的title即可修改标题样式成功</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/deep/ <span class="selector-class">.el-drawer__header</span>&#123;</span><br><span class="line">   <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在此之后可以用/deep/来修改elementui中一些其他组件的样式</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86deep/" data-id="cl1apwoz9000kwcu0gv8gd6pe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue学习之认识ref" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86ref/" class="article-date">
+  <time datetime="2021-08-04T15:24:11.000Z" itemprop="datePublished">2021-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86ref/">Vue学习之认识ref</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ref相当于一个dom节点，值为string</p>
+<p>通俗将类似于原生js的document.querySelector(‘xxx’)；但是不同的是vue是操纵虚拟dom，在渲染初期并没有这个属性，而是在创建vue实例后才加到虚拟dom中。</p>
+<p>其中ref有以下几种常见用法：</p>
+<p>本页面获取dom元素</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&quot;divmsg&quot;</span>&gt;</span>divmsg<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;getmsg&quot;</span>&gt;</span>div内元素<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">getmsg</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.$ref.divmsg)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出11111</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86ref/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86ref/" data-id="cl1apwozb000owcu0h711hvuu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue中v-on事件总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Vue%E4%B8%ADv-on%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2021-08-02T02:13:48.000Z" itemprop="datePublished">2021-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Vue%E4%B8%ADv-on%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BB%93/">Vue中v-on事件总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="资源事件"><a href="#资源事件" class="headerlink" title="资源事件"></a>资源事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>error</code></td>
+<td>资源加载失败时。</td>
+</tr>
+<tr>
+<td><code>abort</code></td>
+<td>正在加载资源已经被中止时。</td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td>资源及其相关资源已完成加载。</td>
+</tr>
+<tr>
+<td><code>beforeunload</code></td>
+<td>window，document 及其资源即将被卸载。</td>
+</tr>
+<tr>
+<td><code>unload</code></td>
+<td>文档或一个依赖资源正在被卸载。</td>
+</tr>
+</tbody></table>
+<h3 id="网络事件"><a href="#网络事件" class="headerlink" title="网络事件"></a>网络事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>online</code></td>
+<td>浏览器已获得网络访问。</td>
+</tr>
+<tr>
+<td><code>offline</code></td>
+<td>浏览器已失去网络访问。</td>
+</tr>
+</tbody></table>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Vue%E4%B8%ADv-on%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BB%93/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Vue%E4%B8%ADv-on%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BB%93/" data-id="cl1apwozg000wwcu00q439lmq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87%E8%BD%AC%E8%BD%BD/" rel="tag">优秀博文转载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue两组间通过传值设置另一个组件背景" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Vue%E4%B8%A4%E7%BB%84%E9%97%B4%E9%80%9A%E8%BF%87%E4%BC%A0%E5%80%BC%E8%AE%BE%E7%BD%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E8%83%8C%E6%99%AF/" class="article-date">
+  <time datetime="2021-07-31T01:58:16.000Z" itemprop="datePublished">2021-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Vue%E4%B8%A4%E7%BB%84%E9%97%B4%E9%80%9A%E8%BF%87%E4%BC%A0%E5%80%BC%E8%AE%BE%E7%BD%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E8%83%8C%E6%99%AF/">Vue两组间通过传值设置另一个组件背景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="vue项目中，从一个组件获取图片url，并为另一个组件设置该图片为背景的盒子"><a href="#vue项目中，从一个组件获取图片url，并为另一个组件设置该图片为背景的盒子" class="headerlink" title="vue项目中，从一个组件获取图片url，并为另一个组件设置该图片为背景的盒子"></a>vue项目中，从一个组件获取图片url，并为另一个组件设置该图片为背景的盒子</h4><h5 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div </span><br><span class="line">       class=&quot;intd_content_banner&quot; </span><br><span class="line">       :style=&quot;&#123;background:&#x27;url(&#x27;+banner.url+&#x27;)&#x27;&#125;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">      props:[&#x27;banner&#x27;],</span><br><span class="line">      name: &quot;Banner&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Vue%E4%B8%A4%E7%BB%84%E9%97%B4%E9%80%9A%E8%BF%87%E4%BC%A0%E5%80%BC%E8%AE%BE%E7%BD%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E8%83%8C%E6%99%AF/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Vue%E4%B8%A4%E7%BB%84%E9%97%B4%E9%80%9A%E8%BF%87%E4%BC%A0%E5%80%BC%E8%AE%BE%E7%BD%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E8%83%8C%E6%99%AF/" data-id="cl1apwoz8000iwcu01w3z31nb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JsQuestions-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/JsQuestions-1/" class="article-date">
+  <time datetime="2021-07-23T12:44:59.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/JsQuestions-1/">JsQuestions-1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id><a href="#" class="headerlink" title></a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出什么？</span></span><br><span class="line"><span class="keyword">const</span> myFunc = <span class="function">(<span class="params">&#123; x, y, z &#125;</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(x, y, z);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myFunc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>A: <code>1</code> <code>2</code> <code>3</code></p>
+</li>
+<li><p>B: <code>&#123;1: 1&#125;</code> <code>&#123;2: 2&#125;</code> <code>&#123;3: 3&#125;</code></p>
+</li>
+<li><p>C: <code>&#123; 1: undefined &#125;</code> <code>undefined</code> <code>undefined</code></p>
+</li>
+<li><p>D: <code>undefined</code> <code>undefined</code> <code>undefined</code></p></li></ul>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/JsQuestions-1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/JsQuestions-1/" data-id="cl1apwoz6000dwcu0ecn69c3k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Js-Questions/" rel="tag">Js-Questions</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git学习Ⅱ" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A1/" class="article-date">
+  <time datetime="2021-07-22T09:59:31.000Z" itemprop="datePublished">2021-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A1/">Git学习Ⅱ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="10-alias命令别名提高操作效率"><a href="#10-alias命令别名提高操作效率" class="headerlink" title="10.alias命令别名提高操作效率"></a>10.alias命令别名提高操作效率</h4><p>使用alias重新定西提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	a = add .</span><br><span class="line">	c = commit</span><br><span class="line">	l = log</span><br><span class="line">	s = status </span><br></pre></td></tr></table></figure>
+
+<h4 id="11-git分支branch存在的意义"><a href="#11-git分支branch存在的意义" class="headerlink" title="11.git分支branch存在的意义"></a>11.git分支branch存在的意义</h4><p>Git分支是由指针管理起来的，所以创建、切换、合并、删除分支都非常快，非常适合大型项目的开发。</p>
+<p>在分支上做开发，调试好了后再合并到主分支。那么每个人开发模块式都不会影响到别人。</p>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Git%E5%AD%A6%E4%B9%A0%E2%85%A1/" data-id="cl1apwoz50009wcu00e0rajf0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git%E5%AD%A6%E4%B9%A0/" rel="tag">git学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git学习Ⅰ" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A0/" class="article-date">
+  <time datetime="2021-07-21T02:35:15.000Z" itemprop="datePublished">2021-07-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A0/">Git学习Ⅰ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git学习Ⅰ"><a href="#Git学习Ⅰ" class="headerlink" title="Git学习Ⅰ"></a>Git学习Ⅰ</h1><h4 id="1-配置作者信息"><a href="#1-配置作者信息" class="headerlink" title="1.配置作者信息"></a>1.配置作者信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir git  创建文件夹</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ll 显示 目录列表</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">pwd</span> 看当前在那个文件夹</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> 会文件夹目录</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/Git%E5%AD%A6%E4%B9%A0%E2%85%A0/" data-id="cl1apwoz30007wcu0dgg195ny" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git%E5%AD%A6%E4%B9%A0/" rel="tag">git学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html5中的session storage和local storage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%5Bobject%20Object%5D/html5%E4%B8%AD%E7%9A%84session%20storage%E5%92%8Clocal%20storage/" class="article-date">
+  <time datetime="2021-07-19T14:48:08.000Z" itemprop="datePublished">2021-07-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/html5/">html5</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%5Bobject%20Object%5D/html5%E4%B8%AD%E7%9A%84session%20storage%E5%92%8Clocal%20storage/">html5中的session storage和local storage</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随着互联网的快速发展,基于网页的应用越来越普遍,同时也变的越来越复杂,为了满足各种各样的需求,会经常性在本地存储大量的数据, HTML5规范提出了相关解决方案。</p>
+<p><strong>本地存储特性</strong></p>
+<p>1、数据存储在用户浏览器中</p>
+<p>2、设置、读取方便、甚至页面刷新不失数据</p>
+<p>3、容量较大, 储存大小约为5MB</p>
+<p>4、只能存储字符串,可以将对象JSON.stringifyO编码后存储</p>
+        
+          <p class="article-more-link">
+            <a href="/%5Bobject%20Object%5D/html5%E4%B8%AD%E7%9A%84session%20storage%E5%92%8Clocal%20storage/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://plumliil.github.io/[object%20Object]/html5%E4%B8%AD%E7%9A%84session%20storage%E5%92%8Clocal%20storage/" data-id="cl1apwozk0012wcu06ifx88nk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/local-storage/" rel="tag">local storage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session-storage/" rel="tag">session storage</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ajax/">Ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/">函数封装</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript%E6%96%B9%E6%B3%95/" rel="tag">JavaScript方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Js-Questions/" rel="tag">Js-Questions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/call-apply-bind/" rel="tag">call()&apply()&bind()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-border/" rel="tag">css-border</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git%E5%AD%A6%E4%B9%A0/" rel="tag">git学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local-storage/" rel="tag">local storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session-storage/" rel="tag">session storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87%E8%BD%AC%E8%BD%BD/" rel="tag">优秀博文转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" rel="tag">函数封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag">浅拷贝与深拷贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/JavaScript%E6%96%B9%E6%B3%95/" style="font-size: 10px;">JavaScript方法</a> <a href="/tags/Js-Questions/" style="font-size: 13.33px;">Js-Questions</a> <a href="/tags/ajax/" style="font-size: 13.33px;">ajax</a> <a href="/tags/call-apply-bind/" style="font-size: 10px;">call()&apply()&bind()</a> <a href="/tags/css-border/" style="font-size: 10px;">css-border</a> <a href="/tags/git%E5%AD%A6%E4%B9%A0/" style="font-size: 13.33px;">git学习</a> <a href="/tags/local-storage/" style="font-size: 10px;">local storage</a> <a href="/tags/session-storage/" style="font-size: 10px;">session storage</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87%E8%BD%AC%E8%BD%BD/" style="font-size: 10px;">优秀博文转载</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" style="font-size: 10px;">函数封装</a> <a href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/" style="font-size: 10px;">浅拷贝与深拷贝</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" style="font-size: 13.33px;">问题解决</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 20px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/%5Bobject%20Object%5D/%E9%80%92%E5%BD%92%E7%BB%99%E6%88%91%E6%95%B4%E9%BA%BB%E4%BA%86/">递归给我整麻了</a>
+          </li>
+        
+          <li>
+            <a href="/%5Bobject%20Object%5D/hello-world/">引</a>
+          </li>
+        
+          <li>
+            <a href="/%5Bobject%20Object%5D/%E6%89%8B%E5%86%99call-apply-bind/">手写call&amp;apply&amp;bind</a>
+          </li>
+        
+          <li>
+            <a href="/%5Bobject%20Object%5D/call%EF%BC%8Capply%EF%BC%8Cbind%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/">call，apply，bind的简单用法</a>
+          </li>
+        
+          <li>
+            <a href="/%5Bobject%20Object%5D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝与深拷贝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 PlumLi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
