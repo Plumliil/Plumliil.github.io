@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Plumli"><title>Git学习Ⅱ · PlumLi</title><meta name="description" content="10.alias命令别名提高操作效率使用alias重新定西提交
+12345[alias]	a = add .	c = commit	l = log	s = status 
+
+11.git分支branch存在的意义Git分支是由指针管理起来的，所以创建、切换、合并、删除分支都非常快，非常适合大型项目的"><meta name="keywords" content="极限博客,极限Blog,博客,极限"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">PlumLi</a></h3><div class="description"><p>心之所愿，无事不成。<br> Nothing is impossible to a willing heart.</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li><li><a href="plumliil@foxmail.com"><i class="fa fa-envelope"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2017 - 2020 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">xxxxxxxx</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">xxxxxxxx</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Git学习Ⅱ</a></h3></div><div class="post-content"><h4 id="10-alias命令别名提高操作效率"><a href="#10-alias命令别名提高操作效率" class="headerlink" title="10.alias命令别名提高操作效率"></a>10.alias命令别名提高操作效率</h4><p>使用alias重新定西提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	a = add .</span><br><span class="line">	c = commit</span><br><span class="line">	l = log</span><br><span class="line">	s = status </span><br></pre></td></tr></table></figure>
+
+<h4 id="11-git分支branch存在的意义"><a href="#11-git分支branch存在的意义" class="headerlink" title="11.git分支branch存在的意义"></a>11.git分支branch存在的意义</h4><p>Git分支是由指针管理起来的，所以创建、切换、合并、删除分支都非常快，非常适合大型项目的开发。</p>
+<p>在分支上做开发，调试好了后再合并到主分支。那么每个人开发模块式都不会影响到别人。</p>
+ <span id="more"></span>
+
+
+
+<h4 id="12-实例讲解分支branch基本操作"><a href="#12-实例讲解分支branch基本操作" class="headerlink" title="12.实例讲解分支branch基本操作"></a>12.实例讲解分支branch基本操作</h4><p>$ git branch xxx 创建分支</p>
+<p>$ git checkout xxx 切换分支</p>
+<p>$ git branch 查看分支</p>
+<p>$ git checkout -b xxx 创建并切换分支</p>
+<p>创建新功能要创建并切换到新的分支，不污染主分支</p>
+<h4 id="13-分支的合并"><a href="#13-分支的合并" class="headerlink" title="13.分支的合并"></a>13.分支的合并</h4><p>$ git master xxx 合并分支</p>
+<p>$ git branch -d xxx 删除分支</p>
+<h4 id="14-分支管理-–merged-和-–no-merged-及分支强制删除操作"><a href="#14-分支管理-–merged-和-–no-merged-及分支强制删除操作" class="headerlink" title="14.分支管理 –merged 和 –no-merged 及分支强制删除操作"></a>14.分支管理 –merged 和 –no-merged 及分支强制删除操作</h4><p> $ git branch –merged 查看合并分支</p>
+<p>$ git branch –no-merged 查看未合并分支</p>
+<p>$ git branch -d xxx 删除分支</p>
+<p>$ git branch -D xxx 强制删除分支</p>
+<h4 id="15-标准的分支操作工作流"><a href="#15-标准的分支操作工作流" class="headerlink" title="15.标准的分支操作工作流"></a>15.标准的分支操作工作流</h4><p><img src="/.io//Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210717105541895.png" alt="image-20210717105541895"></p>
+<h4 id="16-stash临时储存区实例讲解"><a href="#16-stash临时储存区实例讲解" class="headerlink" title="16.stash临时储存区实例讲解"></a>16.stash临时储存区实例讲解</h4><p>当需要跳到其他分支去完成任务时，如果当前文件不需要提交，可以将当前文件放入暂存区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash list 查看暂存区文件</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash pop 删除暂存区</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash apply stash@&#123;1&#125; 恢复第一个文件，切换某一个文件存储状态</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="17-git的Tag标签"><a href="#17-git的Tag标签" class="headerlink" title="17.git的Tag标签"></a>17.git的Tag标签</h4><p>稳定版</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git tag 查看标签</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git tag v1.0 打标签</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="18-生成zip代码压缩包"><a href="#18-生成zip代码压缩包" class="headerlink" title="18.生成zip代码压缩包"></a>18.生成zip代码压缩包</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git archive master --prefix=<span class="string">&#x27;lyh&#x27;</span> --form=zip &gt; xxx.zip  创建压缩包</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="19-使用系统别名定义git全局指令"><a href="#19-使用系统别名定义git全局指令" class="headerlink" title="19.使用系统别名定义git全局指令"></a>19.使用系统别名定义git全局指令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias gs=&quot;git status&quot;alias gc=&quot;git commit -m&quot;alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit  &quot;alias gb=&quot;git branch&quot;alias gb=&quot;git branch&quot;alias ga=&quot;git add&quot;alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
+
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-07-22</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Git/" title="Git">Git </a><a class="tag" href="/tags/git学习/" title="git学习">git学习 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/Git学习Ⅱ/,PlumLi,Git学习Ⅱ,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/JsQuestions-1/" title="JsQuestions-1">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/Git%E5%AD%A6%E4%B9%A0%E2%85%A0/" title="Git学习Ⅰ">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'',
+  app_key:'',
+  placeholder:'念念不忘，必有回响...',
+  path: window.location.pathname,
+  serverURLs: '',
+  visitor:true,
+  recordIP:true,
+  avatar:'mp'
+})</script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script></body></html>
