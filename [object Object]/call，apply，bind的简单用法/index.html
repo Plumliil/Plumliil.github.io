@@ -1,262 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+extends partial/layout
 
-  
-  <title>call，apply，bind的简单用法 | PlumLi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单了解一下call，apply以及bind的用法首先说一下三者的共同之处call、apply、bind作用是改变函数执行时的上下文，简单地说就是改变函数运行时的this指向，当我们函数中所需要的this指向不是当前的this时可以用这三种方法来改变this指向 其次来介绍一下这三种方法并说明这三种方法的作用call()call(绑定给this的值，，第一个参数，第二个参数) call(this，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="call，apply，bind的简单用法">
-<meta property="og:url" content="https://plumliil.github.io/[object%20Object]/call%EF%BC%8Capply%EF%BC%8Cbind%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/index.html">
-<meta property="og:site_name" content="PlumLi">
-<meta property="og:description" content="简单了解一下call，apply以及bind的用法首先说一下三者的共同之处call、apply、bind作用是改变函数执行时的上下文，简单地说就是改变函数运行时的this指向，当我们函数中所需要的this指向不是当前的this时可以用这三种方法来改变this指向 其次来介绍一下这三种方法并说明这三种方法的作用call()call(绑定给this的值，，第一个参数，第二个参数) call(this，">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-23T13:06:01.000Z">
-<meta property="article:modified_time" content="2022-03-09T13:44:06.134Z">
-<meta property="article:author" content="PlumLi">
-<meta property="article:tag" content="JavaScript">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="PlumLi" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+include mixins
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+block site_title
+    != page.title + " · " + config.title
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">PlumLi</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Plumliil.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-call，apply，bind的简单用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/%5Bobject%20Object%5D/call%EF%BC%8Capply%EF%BC%8Cbind%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/" class="article-date">
-  <time datetime="2021-11-23T13:06:01.000Z" itemprop="datePublished">2021-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
+block description
+    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
+    meta(name="description", content=desc)
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      call，apply，bind的简单用法
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简单了解一下call，apply以及bind的用法"><a href="#简单了解一下call，apply以及bind的用法" class="headerlink" title="简单了解一下call，apply以及bind的用法"></a>简单了解一下call，apply以及bind的用法</h2><h3 id="首先说一下三者的共同之处"><a href="#首先说一下三者的共同之处" class="headerlink" title="首先说一下三者的共同之处"></a>首先说一下三者的共同之处</h3><p>call、apply、bind作用是改变函数执行时的上下文，简单地说就是改变函数运行时的this指向，当我们函数中所需要的this指向不是当前的this时可以用这三种方法来改变this指向</p>
-<h3 id="其次来介绍一下这三种方法并说明这三种方法的作用"><a href="#其次来介绍一下这三种方法并说明这三种方法的作用" class="headerlink" title="其次来介绍一下这三种方法并说明这三种方法的作用"></a>其次来介绍一下这三种方法并说明这三种方法的作用</h3><h3 id="call"><a href="#call" class="headerlink" title="call()"></a>call()</h3><p><code>call(绑定给this的值，，第一个参数，第二个参数)</code></p>
-<p><code>call(this，agr1，arg2)</code></p>
-<span id="more"></span>
-
-<p>注意：call（）的传参，每个参数中间用 <code>,</code>来分割</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;obj1Name&#x27;</span>,</span><br><span class="line">  <span class="attr">setAge</span>: <span class="function"><span class="keyword">function</span> (<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;obj2Name&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj1.setAge(<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1); <span class="comment">// &#123;&quot;name&quot;:&quot;obj1Name&quot;,&quot;age&quot;:18&#125;</span></span><br><span class="line"><span class="comment">// obj2.setAge(19); // obj2.setAge is not a function</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);</span><br><span class="line">obj1.setAge.call(obj2, <span class="number">20</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj2); <span class="comment">// &#123;&quot;name&quot;:&quot;obj2Name&quot;,&quot;age&quot;:20&#125;</span></span><br></pre></td></tr></table></figure>
-<p>obj2对象中没有setAge函数当需要用到setAge函数时可以通过call()改变obj1中setAge函数this的指向并传递参数，指向obj2，来给obj2设置age。</p>
-<h3 id="apply"><a href="#apply" class="headerlink" title="apply()"></a>apply()</h3><p><code>apply(绑定给this的值,[arg1,arg2])</code></p>
-<p><code>apply(this，[agr1，arg2])</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;obj1Name&#x27;</span>,</span><br><span class="line">  <span class="attr">setAge</span>: <span class="function"><span class="keyword">function</span> (<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;obj2Name&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj1.setAge(<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1); <span class="comment">// &#123;&quot;name&quot;:&quot;obj1Name&quot;,&quot;age&quot;:18&#125;</span></span><br><span class="line"><span class="comment">// obj2.setAge(19); // obj2.setAge is not a function</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);</span><br><span class="line">obj1.setAge.apply(obj2, [<span class="number">20</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(obj2); <span class="comment">// &#123;&quot;name&quot;:&quot;obj2Name&quot;,&quot;age&quot;:20&#125;</span></span><br></pre></td></tr></table></figure>
-<p>apply()和call()的用法相似，唯一的不同点就是使用apply()方法传参时需要把参数传入数组中</p>
-<h3 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h3><p><code>bind(绑定给this的值,arg1,arg2)(arg3)</code></p>
-<p><code>bind(this，agr1，arg2)(arg3)</code><br>和call()很相似，第一个参数是this的指向，从第二个参数开始是接收的参数列表。区别在于bind方法返回值是函数以及bind接收的参数列表的使用。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.f+a+b</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn.bind(&#123;<span class="attr">f</span>:<span class="number">2</span>&#125;)(<span class="number">1</span>,<span class="number">1</span>)); <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(fn.bind(&#123;<span class="attr">f</span>:<span class="number">2</span>&#125;,<span class="number">2</span>)(<span class="number">1</span>)); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
-<h3 id="call-apply-bind-三种方法的区别"><a href="#call-apply-bind-三种方法的区别" class="headerlink" title="call(),apply(),bind()三种方法的区别"></a>call(),apply(),bind()三种方法的区别</h3><p>bind()返回对应函数, 便于稍后调用； apply(), call()则是立即调用。</p>
-<h4 id="需要注意的时箭头函数的this指向，箭头函数内的this的指向指的是箭头函数所在对象中的this"><a href="#需要注意的时箭头函数的this指向，箭头函数内的this的指向指的是箭头函数所在对象中的this" class="headerlink" title="需要注意的时箭头函数的this指向，箭头函数内的this的指向指的是箭头函数所在对象中的this"></a>需要注意的时箭头函数的this指向，箭头函数内的this的指向指的是箭头函数所在对象中的this</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://plumliil.github.io/[object%20Object]/call%EF%BC%8Capply%EF%BC%8Cbind%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/" data-id="cl1apwoze000uwcu096phc3dv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/%5Bobject%20Object%5D/%E6%89%8B%E5%86%99call-apply-bind/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          手写call&amp;apply&amp;bind
-        
-      </div>
-    </a>
-  
-  
-    <a href="/%5Bobject%20Object%5D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">浅拷贝与深拷贝</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ajax/">Ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/">函数封装</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript%E6%96%B9%E6%B3%95/" rel="tag">JavaScript方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Js-Questions/" rel="tag">Js-Questions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/call-apply-bind/" rel="tag">call()&apply()&bind()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-border/" rel="tag">css-border</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git%E5%AD%A6%E4%B9%A0/" rel="tag">git学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local-storage/" rel="tag">local storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session-storage/" rel="tag">session storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87%E8%BD%AC%E8%BD%BD/" rel="tag">优秀博文转载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" rel="tag">函数封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag">浅拷贝与深拷贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/JavaScript%E6%96%B9%E6%B3%95/" style="font-size: 10px;">JavaScript方法</a> <a href="/tags/Js-Questions/" style="font-size: 13.33px;">Js-Questions</a> <a href="/tags/ajax/" style="font-size: 13.33px;">ajax</a> <a href="/tags/call-apply-bind/" style="font-size: 10px;">call()&apply()&bind()</a> <a href="/tags/css-border/" style="font-size: 10px;">css-border</a> <a href="/tags/git%E5%AD%A6%E4%B9%A0/" style="font-size: 13.33px;">git学习</a> <a href="/tags/local-storage/" style="font-size: 10px;">local storage</a> <a href="/tags/session-storage/" style="font-size: 10px;">session storage</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87%E8%BD%AC%E8%BD%BD/" style="font-size: 10px;">优秀博文转载</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" style="font-size: 10px;">函数封装</a> <a href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/" style="font-size: 10px;">浅拷贝与深拷贝</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" style="font-size: 13.33px;">问题解决</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 20px;">随笔</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/%5Bobject%20Object%5D/%E9%80%92%E5%BD%92%E7%BB%99%E6%88%91%E6%95%B4%E9%BA%BB%E4%BA%86/">递归给我整麻了</a>
-          </li>
-        
-          <li>
-            <a href="/%5Bobject%20Object%5D/hello-world/">引</a>
-          </li>
-        
-          <li>
-            <a href="/%5Bobject%20Object%5D/%E6%89%8B%E5%86%99call-apply-bind/">手写call&amp;apply&amp;bind</a>
-          </li>
-        
-          <li>
-            <a href="/%5Bobject%20Object%5D/call%EF%BC%8Capply%EF%BC%8Cbind%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/">call，apply，bind的简单用法</a>
-          </li>
-        
-          <li>
-            <a href="/%5Bobject%20Object%5D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝与深拷贝</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 PlumLi<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+block content
+  .autopagerize_page_element: .content: .post-page
+    include mixins
+    +make_post(page, true)
+    .share
+      .evernote
+        a.fa.fa-bookmark(href="",onclick="javascript:join_favorite()", ref="sidebar")
+      .weibo
+        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
+      .twitter
+        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
+    - var prev = page.prev ? page.prev.path : false;
+    - var next = page.next ? page.next.path : false;
+    .pagination
+      ul.clearfix
+        if prev
+          li.pre.pagbuttons
+            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
+        if next
+          li.next.pagbuttons
+            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
+    if page.comments
+        include partial/comments
