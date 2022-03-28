@@ -1,0 +1,66 @@
+# 博客配置
+keywords: 极限博客,极限Blog,博客,极限
+author: Plumli
+description: 心之所愿，无事不成。<br> Nothing is impossible to a willing heart.
+# 如需修改icon,请替换 source/images/favicon.ico 文件
+avatar: xxxxxxxxx
+beian: xxxxxxxx
+gongan: xxxxxxxx
+copyright: 2017 - 2020 
+
+# 社交账号
+github: https://github.com/plumliil
+mail: plumliil@foxmail.com
+
+  
+# Valine 评论，如何配置请看官网 https://valine.js.org
+valine:
+  enable: true # if you want use valine, please set enable: true
+  appid: 
+  appkey: 
+  notify: false # true/false:mail notify !!!Test,Caution. https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE
+  verify: false # true/false:verify code
+  avatar: mp # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
+  placeholder: 念念不忘，必有回响... # comment box placeholder
+  serverURLs: 
+
+# 百度统计设置
+# 请访问 https://tongji.baidu.com/ 
+# 获取统计JS代码放入 anatole-core/source/js/baidu-tongji.js
+# 不想设置请进入 anatole-core/layout/partial/layout.pug 文件
+# 删除 script(src=url_for("/js/baidu-tongji.js")) 此行
+
+# 留言板页面和关于页面，请在source文件夹下新建guestbook、about文件夹，然后再文件夹新建index.md文件；如不需要评论请在两个---中增加comments: false。
+
+# 如有报错，请查看主题下package.json文件的插件是否已经安装，安装版本一般无所谓，已安装的插件可以在hexo目录下的package.json查看。
+# 安装命令如下 npm install 插件名 --save
+# 一般是没有安装下面两个
+# npm install --save hexo-renderer-pug
+# npm install --save hexo-tag-aplayer
+
+# 左下角的猫：https://github.com/EYHN/hexo-helper-live2d
+# npm install --save hexo-helper-live2d
+# npm install --save live2d-widget-model-tororo
+# 在hexo的_config.yml的文件下添加(非主题配置文件)
+# live2d:
+#   enable: true
+#   scriptFrom: local
+#   pluginRootPath: live2dw/
+#   pluginJsPath: lib/
+#   pluginModelPath: assets/
+#   tagMode: false
+#   debug: false
+#   model:
+#     use: live2d-widget-model-tororo
+#   display:
+#     position: left
+#     width: 200
+#     height: 400
+#     hOffset: 5
+#     vOffset: -38
+#   mobile:
+#     show: false
+#     scale: 0.2
+#   react:
+#     opacityDefault: 0.8
+#     opacityOnHover: 0.2
