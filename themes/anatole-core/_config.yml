@@ -1,28 +1,29 @@
 # 博客配置
-keywords: 极限博客,极限Blog,博客,极限
+keywords: 学习笔记,心得分享,踩坑记录
 author: Plumli
-description: 心之所愿，无事不成。<br> Nothing is impossible to a willing heart.
+description: 云深山坞，烟冷江皋，人生未易相逢<br> Nothing is impossible
 # 如需修改icon,请替换 source/images/favicon.ico 文件
-avatar: xxxxxxxxx
-beian: xxxxxxxx
-gongan: xxxxxxxx
-copyright: 2017 - 2020 
+avatar: 
+beian: plumliil@foxmail.com
+gongan: 豫ICP备2021031361号-1
+copyright: 2021 - 2022
 
 # 社交账号
 github: https://github.com/plumliil
-mail: plumliil@foxmail.com
-
+# mail: mailto:x@jixian.io
+# zhihu: https://zhihu.com/people/
+QQ: http://sighttp.qq.com/authd?IDKEY=476453574
   
 # Valine 评论，如何配置请看官网 https://valine.js.org
 valine:
   enable: true # if you want use valine, please set enable: true
-  appid: 
-  appkey: 
+  appid: w5No6Op13MjGyivKUmW5WY6M-MdYXbMMI
+  appkey: 1bBarriQNVGN5LehKDNuMESW
   notify: false # true/false:mail notify !!!Test,Caution. https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE
   verify: false # true/false:verify code
   avatar: mp # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
-  placeholder: 念念不忘，必有回响... # comment box placeholder
-  serverURLs: 
+  placeholder: 说点什么吧... # comment box placeholder
+  # serverURLs: 
 
 # 百度统计设置
 # 请访问 https://tongji.baidu.com/ 

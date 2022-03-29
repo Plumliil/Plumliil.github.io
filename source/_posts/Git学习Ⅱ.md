@@ -2,8 +2,7 @@
 title: Git学习Ⅱ
 date: 2021-07-22 17:59:31
 tags:
-  - git学习
-categories: Git
+  - Git
 ---
 
 #### 10.alias命令别名提高操作效率

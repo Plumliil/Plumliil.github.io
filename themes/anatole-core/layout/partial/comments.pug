@@ -4,8 +4,11 @@ if theme.valine
     if theme.valine.enable == true
         a#comments
         #vcomments(style="margin:0 30px;")
-        script(src='//cdn1.lncld.net/static/js/3.0.4/av-min.js')
-        script(src='//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js')
+        //- script(src='//cdn1.lncld.net/static/js/3.0.4/av-min.js')
+        script(src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js")
+        //- script(src='//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js')
+        script(src='//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js')
+        //- script(src='//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js' + '?v=' + theme.version)
         script.
           var valine = new Valine({
             el:'#vcomments',
@@ -18,5 +21,6 @@ if theme.valine
             serverURLs: '#{theme.valine.serverURLs}',
             visitor:true,
             recordIP:true,
+            pageSize:10,
             avatar:'#{theme.valine.avatar}'
           })

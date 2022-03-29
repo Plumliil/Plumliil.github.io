@@ -2,6 +2,7 @@
 node_modules/
 .github
 .vscode
+db.json
 package-lock
 node_modules
 

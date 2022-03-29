@@ -2,8 +2,7 @@
 title: Git学习Ⅰ
 date: 2021-07-21 10:35:15
 tags:
-  - git学习
-categories: Git
+  - Git
 ---
 
 # Git学习Ⅰ
