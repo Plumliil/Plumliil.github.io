@@ -30,9 +30,9 @@ function addLoadEvent(func) {
 
          TagCanvas.textFont = 'PingHei, PingFang SC, Helvetica Neue, Microsoft YaHei';
          TagCanvas.textColour = '#333';
-         TagCanvas.textHeight = textHeight;
+         TagCanvas.textHeight = textHeight*2/3;
          TagCanvas.outlineColour = '#E2E1D1';
-         TagCanvas.maxSpeed = 0.07;
+        //  TagCanvas.maxSpeed = 0.07;
          TagCanvas.freezeActive = true;
          TagCanvas.outlineMethod = 'block';
          TagCanvas.minBrightness = 0.2;
