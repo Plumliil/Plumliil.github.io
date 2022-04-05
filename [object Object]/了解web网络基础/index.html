@@ -1,24 +1,45 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Plumli"><title>了解web网络基础 · 李子味李子</title><meta name="description" content="TCP/IP协议:一种规则,规定不同计算机操作系统,硬件之间怎么通信的一种规则
 像这样把互联网相关联的协议集合起来总称为TCP/IP协议.
 TCP/IP分层管理按照组层次分为以下四层:
-- 应用层:决定了向用户提供应用服务时通信的活动
- - tcp/ip协议族内渔村了各类通用应用服务比如FTP和DN"><meta name="keywords" content="学习笔记,心得分享,踩坑记录"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">李子味李子</a></h3><div class="description"><p>一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2022 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">plumliil@foxmail.com</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">豫ICP备2021031361号-1</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>了解web网络基础</a></h3></div><div class="post-content"><h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p>协议:一种规则,规定不同计算机操作系统,硬件之间怎么通信的一种规则</p>
+
+应用层:决定了向用户提供应用服务时通信的活动
+
+tcp/ip协议族内预存了各类通用应用服务比如FTP和DNS等
+"><meta name="keywords" content="学习笔记,心得分享,踩坑记录"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">李子味李子</a></h3><div class="description"><p>一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2022 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">plumliil@foxmail.com</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">豫ICP备2021031361号-1</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>了解web网络基础</a></h3></div><div class="post-content"><h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p>协议:一种规则,规定不同计算机操作系统,硬件之间怎么通信的一种规则</p>
 <p>像这样把互联网相关联的协议集合起来总称为TCP/IP协议.</p>
 <h5 id="TCP-IP分层管理"><a href="#TCP-IP分层管理" class="headerlink" title="TCP/IP分层管理"></a>TCP/IP分层管理</h5><p>按照组层次分为以下四层:</p>
-<p>- 应用层:决定了向用户提供应用服务时通信的活动</p>
-<p> - tcp/ip协议族内渔村了各类通用应用服务比如FTP和DNS等</p>
-<p>- 传输层:对上层应用层,提供处于网络连接中两台计算机之间的数据传输.</p>
-<p> - 在传输层有两个性质不同的协议:TCP和UDP</p>
-<p>- 网络层:又名网络互联层有,用来处理网络上流动的数据包</p>
-<p> - 数据包使网络传输的最小数据单位.该层规定了通过怎样的路径(传输路线到达对方计算机),并把数据包传给对方.</p>
-<p> - 与对方计算机之间通过多台计算机或者网络设备进行传输时,网络层所起的作用就是在众多的选项内选择一条传输路线</p>
-<p>- 数据链路层:又称链路层,数据接口层,用来处理链接玩罗德硬件部分,包括操作系统,赢家的驱动,NIC,及光纤等物理可见部分.硬件范畴均在链路层作用范围内.</p>
+<ul>
+<li><p>应用层:决定了向用户提供应用服务时通信的活动</p>
+<ul>
+<li>tcp/ip协议族内预存了各类通用应用服务比如FTP和DNS等</li>
+</ul>
+</li>
+<li><p>传输层:对上层应用层,提供处于网络连接中两台计算机之间的数据传输.</p>
+<ul>
+<li>在传输层有两个性质不同的协议:TCP和UDP</li>
+</ul>
+</li>
+<li><p>网络层:又名网络互联层有,用来处理网络上流动的数据包</p>
+<ul>
+<li>数据包使网络传输的最小数据单位.该层规定了通过怎样的路径(传输路线到达对方计算机),并把数据包传给对方.</li>
+<li>与对方计算机之间通过多台计算机或者网络设备进行传输时,网络层所起的作用就是在众多的选项内选择一条传输路线</li>
+</ul>
+</li>
+<li><p>数据链路层:又称链路层,数据接口层,用来处理链接玩罗德硬件部分,包括操作系统,赢家的驱动,NIC,及光纤等物理可见部分.硬件范畴均在链路层作用范围内.</p>
+</li>
+</ul>
 <p>分层好处:使设计更加简单,给每个层分配不同的任务</p>
 <h5 id="通信传输流"><a href="#通信传输流" class="headerlink" title="通信传输流"></a>通信传输流</h5><p>​    客户端 &lt;—&gt;  应用层(HTTP客户端)① &lt;—&gt; 传输层(TCP)② &lt;—&gt; 网络层(IP)③ &lt;—&gt; 链路层(网络)④ &lt;—&gt; 链路层(网络)④ &lt;—&gt; 网络层(IP) &lt;—&gt; 传输层(TCP) &lt;—&gt;  应用层(HTTP服务器端) &lt;—&gt; 服务端</p>
-<p>- ①:http协议发送请求</p>
-<p>- ②:tcp协议对在应用层收到的数据(http请求报文)进行分割,并在各个报文上打上标记序号及端口号 发送给网络层</p>
-<p>- ③:增加作为通信目的地的MAC地址后转发给链路层</p>
-<p>- ④:接受端的服务器在链路层收到服务端发送的数据,按顺序往上发送一直到应用层,才算真正接收端由客户端发送过来的http请求</p>
+<ul>
+<li><p>①:http协议发送请求</p>
+</li>
+<li><p>②:tcp协议对在应用层收到的数据(http请求报文)进行分割,并在各个报文上打上标记序号及端口号 发送给网络层</p>
+</li>
+<li><p>③:增加作为通信目的地的MAC地址后转发给链路层</p>
+</li>
+<li><p>④:接受端的服务器在链路层收到服务端发送的数据,按顺序往上发送一直到应用层,才算真正接收端由客户端发送过来的http请求</p>
+</li>
+</ul>
 <p>​    在http数据从应用层发出后,之后的每一层都会对其进行封装,在传输层进行TCP首部的封装,在网络层进行IP首部的封装,在数据链路层进行以太网首部封装,在服务端的数据链路层接收到数据后会将这些封装一一消去.</p>
 <h4 id="IP-TCP和DNS"><a href="#IP-TCP和DNS" class="headerlink" title="IP,TCP和DNS"></a>IP,TCP和DNS</h4><p>   IP网际协议位于网络层,作用是通过ip地址和mac地址将各种数据包传给对方,其中ip地址指明了节点被分配到的地址,mac地址是指网卡所属的固定地址,ip地址可以和mac地址进行配对,ip地址可换但是mac地址基本上不会更改.</p>
 <p>​    TCP:tcp协议位于传输层,提供可靠的字节流服务(所谓字节流服务是为了方便传输,将大数据块分割成以报文段为单位的数据包进行管理,将报文段传递给对方),为了将数据准确无误的送达,TCP协议采用了三次握手策略(发送端将标有SYN的数据包发送给服务端,服务端接收到数据包后发送标有SYN/ACK的数据包给发送端,发送端接收到数据包后发送带有SYN的数据包.SYN-synchronize,ACK-acknowledgement)</p>
@@ -27,16 +48,25 @@ TCP/IP分层管理按照组层次分为以下四层:
 <p>​    客户端通过DNS解析获得https:<a target="_blank" rel="noopener" href="http://www.plumli.xyz/%E6%89%80%E5%AF%B9%E5%BA%94%E7%9A%84IP%E5%9C%B0%E5%9D%80---&gt;HTTP%E5%8D%8F%E8%AE%AE%E7%94%9F%E6%88%90%E9%92%88%E5%AF%B9%E7%9B%AE%E6%A0%87web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87---&gt;TCP%E4%B8%BA%E4%BA%86%E6%96%B9%E4%BE%BF%E9%80%9A%E4%BF%A1%E5%B0%86%E6%8A%A5%E6%96%87%E5%88%86%E5%89%B2%E6%88%90%E6%8A%A5%E6%96%87%E6%AE%B5,%E6%8A%8A%E6%AF%8F%E4%B8%AA%E6%8A%A5%E6%96%87%E6%AE%B5%E5%8F%AF%E9%9D%A0%E7%9A%84%E4%BC%A0%E8%BE%93%E7%BB%99%E5%AF%B9%E6%96%B9---&gt;%E6%A0%B9%E6%8D%AEip%E5%9C%B0%E5%9D%80%E5%9C%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%AD%E8%BF%9B%E8%A1%8C%E4%B8%AD%E8%BD%AC---&gt;%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E6%94%B6%E5%88%B0%E6%8A%A5%E6%96%87%E6%AE%B5,%E6%A0%B9%E6%8D%AETCP%E5%8D%8F%E8%AE%AE%E5%AF%B9%E6%8A%A5%E6%96%87%E6%AE%B5%E8%BF%9B%E8%A1%8C%E9%87%8D%E7%BB%84,%E5%B9%B6%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86---&gt;%E6%9C%80%E5%90%8E%E5%B0%86%E5%A4%84%E7%90%86%E8%BF%87%E7%9A%84%E5%86%85%E5%AE%B9%E9%80%9A%E8%BF%87TCP/IP%E5%8D%8F%E8%AE%AE%E5%90%91%E7%94%A8%E6%88%B7%E8%BF%9B%E8%A1%8C%E5%9B%9E%E8%BD%AC">www.plumli.xyz/所对应的IP地址---&gt;HTTP协议生成针对目标web服务器的HTTP请求报文---&gt;TCP为了方便通信将报文分割成报文段,把每个报文段可靠的传输给对方---&gt;根据ip地址在路由器中进行中转---&gt;客户端接收到报文段,根据TCP协议对报文段进行重组,并对请求内容进行处理---&gt;最后将处理过的内容通过TCP/IP协议向用户进行回转</a>.</p>
 <h4 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h4><p>URI:统一资源标识符,用字符串标识某一互联网资源</p>
 <p>URI格式:<code>http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1</code></p>
-<p>- http:协议方案名</p>
-<p>- user:pass登录信息认证(可选)</p>
-<p>- <a href="http://www.example.com:服务器地址">www.example.com:服务器地址</a></p>
-<p>- 80:服务器端口</p>
-<p>- dir/index.html:文件路径</p>
-<p>- uid=1查询字符串</p>
-<p>- ch1片段标识符</p>
+<ul>
+<li><p>http:协议方案名</p>
+</li>
+<li><p>user:pass登录信息认证(可选)</p>
+</li>
+<li><p><a href="http://www.example.com:服务器地址">www.example.com:服务器地址</a></p>
+</li>
+<li><p>80:服务器端口</p>
+</li>
+<li><p>dir/index.html:文件路径</p>
+</li>
+<li><p>uid=1查询字符串</p>
+</li>
+<li><p>ch1片段标识符</p>
+</li>
+</ul>
 <p>URL:统一资源定位符,表示资源在互联网上所处的位置</p>
 <p>读《图解HTTP》笔记记录</p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-04-04</span><i class="fa fa-tag"></i><a class="tag" href="/tags/计算机网络/" title="计算机网络">计算机网络 </a><a class="tag" href="/tags/读书笔记/" title="读书笔记">读书笔记 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/了解web网络基础/,李子味李子,了解web网络基础,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/%E8%BF%91%E6%9C%9Funiapp%E4%BD%BF%E7%94%A8%E5%8F%8A%E6%80%BB%E7%BB%93/" title="近期uniapp使用及总结">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script><script>var valine = new Valine({
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-04-04</span><i class="fa fa-tag"></i><a class="tag" href="/tags/计算机网络/" title="计算机网络">计算机网络 </a><a class="tag" href="/tags/读书笔记/" title="读书笔记">读书笔记 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/了解web网络基础/,李子味李子,了解web网络基础,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E5%87%A0%E4%B8%87%E6%9D%A1%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%B8%8D%E5%8D%A1%E4%BD%8F%E7%95%8C%E9%9D%A2/" title="如何渲染几万条数据并不卡住界面">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/%E8%BF%91%E6%9C%9Funiapp%E4%BD%BF%E7%94%A8%E5%8F%8A%E6%80%BB%E7%BB%93/" title="近期uniapp使用及总结">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script><script>var valine = new Valine({
   el:'#vcomments',
   notify:false || false, 
   verify:false|| false, 

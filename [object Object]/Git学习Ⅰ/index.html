@@ -34,7 +34,7 @@
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/xxx/xxx.git 克隆存在的项目</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="2-流水线操作"><a href="#2-流水线操作" class="headerlink" title="2.流水线操作"></a>2.流水线操作</h4><p><img src="/.io//Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716202644090.png" alt="image-20210716202644090"></p>
+<h4 id="2-流水线操作"><a href="#2-流水线操作" class="headerlink" title="2.流水线操作"></a>2.流水线操作</h4><p><img src="C:\Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716202644090.png" alt="image-20210716202644090"></p>
 <h4 id="3-使用命令完成流水操作"><a href="#3-使用命令完成流水操作" class="headerlink" title="3.使用命令完成流水操作"></a>3.使用命令完成流水操作</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> touch xxx.txt 创建文件</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git add xxx.txt 将文件放入小推车（暂存）</span></span><br></pre></td></tr></table></figure>
@@ -48,7 +48,7 @@
 <h4 id="4-gitignore详解控制版本库文件管理"><a href="#4-gitignore详解控制版本库文件管理" class="headerlink" title="4.gitignore详解控制版本库文件管理"></a>4.gitignore详解控制版本库文件管理</h4><p>在gitignore中控制上传文件（.gitignore中是忽略文件）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git .gitignore</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/.io//Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716210833953.png" alt="image-20210716210833953"></p>
+<p><img src="C:\Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716210833953.png" alt="image-20210716210833953"></p>
 <h4 id="5-从版本库中删除资源"><a href="#5-从版本库中删除资源" class="headerlink" title="5.从版本库中删除资源"></a>5.从版本库中删除资源</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rm file 删除库中及本第文件</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rm --cached file 仅仅删除本地文件</span></span><br></pre></td></tr></table></figure>
@@ -60,7 +60,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git mv indexController.txt IndexController.txt 已存在文件的名字修改</span></span><br></pre></td></tr></table></figure>
 
 <p>在文件夹中修改名称也需要重新提交</p>
-<p><img src="/.io//Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716213618526.png" alt="image-20210716213618526"></p>
+<p><img src="C:\Users\22584\AppData\Roaming\Typora\typora-user-images\image-20210716213618526.png" alt="image-20210716213618526"></p>
 <h4 id="07-使用log日志查看历史记录"><a href="#07-使用log日志查看历史记录" class="headerlink" title="07.使用log日志查看历史记录"></a>07.使用log日志查看历史记录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span> -p 显示文件变动</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span> --name-only 只显示名字</span></span><br></pre></td></tr></table></figure>
