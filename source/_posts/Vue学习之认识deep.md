@@ -2,9 +2,8 @@
 title: Vue学习之认识/deep/
 date: 2021-08-05 23:38:41
 tags:
+  - 前端篇
   - vue
-  - 随笔
-categories: Vue
 ---
 
 elementui使用中deep的用法/deep/

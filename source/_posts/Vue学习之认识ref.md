@@ -2,9 +2,8 @@
 title: Vue学习之认识ref
 date: 2021-08-04 23:24:11
 tags:
+  - 前端篇
   - vue
-  - 随笔
-categories: Vue
 ---
 
 ref相当于一个dom节点，值为string

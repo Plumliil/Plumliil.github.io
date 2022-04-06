@@ -2,9 +2,8 @@
 title: Ajax函数封装
 date: 2021-08-15 23:39:11
 tags:
-- ajax
-categories: 
-- Ajax
+  - 前端篇
+  - ajax
 ---
 
 

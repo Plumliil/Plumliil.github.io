@@ -2,10 +2,8 @@
 title: 认识Ajax
 date: 2021-08-15 23:51:34
 tags:
-- ajax
-- 随笔
-categories: 
-- Ajax
+  - 前端篇
+  - ajax
 ---
 
 ## Ajax应用场景

@@ -2,8 +2,8 @@
 title: Js判断浏览器进度条是否到底部
 date: 2021-11-05 23:07:00
 tags:
-  - JavaScript方法
-categories: JavaScript
+  - 前端篇
+  - JavaScript
 ---
 
 判断浏览器滚动条是否到达浏览器底部在判断前是需要了解几个关键词

@@ -1,9 +1,9 @@
 # 博客配置
 keywords: 学习笔记,心得分享,踩坑记录
 author: Plumli
-description: 云深山坞，烟冷江皋，人生未易相逢<br> Nothing is impossible
+description: 一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible
 # 如需修改icon,请替换 source/images/favicon.ico 文件
-avatar: 
+avatar: /images/favicon.ico
 beian: plumliil@foxmail.com
 gongan: 豫ICP备2021031361号-1
 copyright: 2021 - 2022
@@ -12,7 +12,7 @@ copyright: 2021 - 2022
 github: https://github.com/plumliil
 # mail: mailto:x@jixian.io
 # zhihu: https://zhihu.com/people/
-QQ: http://sighttp.qq.com/authd?IDKEY=476453574
+# QQ: http://sighttp.qq.com/authd?IDKEY=476453574
   
 # Valine 评论，如何配置请看官网 https://valine.js.org
 valine:
@@ -23,6 +23,7 @@ valine:
   verify: false # true/false:verify code
   avatar: mp # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   placeholder: 说点什么吧... # comment box placeholder
+  
   # serverURLs: 
 
 # 百度统计设置

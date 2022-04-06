@@ -2,9 +2,8 @@
 title: JsQuestions-2_定时器
 date: 2021-10-09 17:39:59
 tags:
-- Js-Questions
-categories: 
-  - JavaScript
+- 前端篇
+- JavaScript
 ---
 
 ~~~javascript

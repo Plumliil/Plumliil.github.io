@@ -1,0 +1,2688 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Plumli"><title>Vue中v-on事件总结 · 李子味李子</title><meta name="description" content="资源事件
+
+
+事件名称
+何时触发
+
+
+
+error
+资源加载失败时。
+
+
+abort
+正在加载资源已经被中止时。
+
+
+load
+资源及其相关资源已完成加载。
+
+
+beforeunload
+window，document 及其资源即将被卸载。
+
+
+unload
+文档或一个依赖资源正在被卸载。
+
+
+网络"><meta name="keywords" content="学习笔记,心得分享,踩坑记录"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">李子味李子</a></h3><div class="description"><p>一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2022 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">plumliil@foxmail.com</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">豫ICP备2021031361号-1</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Vue中v-on事件总结</a></h3></div><div class="post-content"><h3 id="资源事件"><a href="#资源事件" class="headerlink" title="资源事件"></a>资源事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>error</code></td>
+<td>资源加载失败时。</td>
+</tr>
+<tr>
+<td><code>abort</code></td>
+<td>正在加载资源已经被中止时。</td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td>资源及其相关资源已完成加载。</td>
+</tr>
+<tr>
+<td><code>beforeunload</code></td>
+<td>window，document 及其资源即将被卸载。</td>
+</tr>
+<tr>
+<td><code>unload</code></td>
+<td>文档或一个依赖资源正在被卸载。</td>
+</tr>
+</tbody></table>
+<h3 id="网络事件"><a href="#网络事件" class="headerlink" title="网络事件"></a>网络事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>online</code></td>
+<td>浏览器已获得网络访问。</td>
+</tr>
+<tr>
+<td><code>offline</code></td>
+<td>浏览器已失去网络访问。</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h3 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>focus</code></td>
+<td>元素获得焦点（不会冒泡）。</td>
+</tr>
+<tr>
+<td><code>blur</code></td>
+<td>元素失去焦点（不会冒泡）。</td>
+</tr>
+</tbody></table>
+<h3 id="WebSocket-事件"><a href="#WebSocket-事件" class="headerlink" title="WebSocket 事件"></a>WebSocket 事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>open</code></td>
+<td>WebSocket 连接已建立。</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>通过 WebSocket 接收到一条消息。</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>WebSocket 连接异常被关闭（比如有些数据无法发送）。</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td>WebSocket 连接已关闭。</td>
+</tr>
+</tbody></table>
+<h3 id="会话历史事件"><a href="#会话历史事件" class="headerlink" title="会话历史事件"></a>会话历史事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pagehide</code></td>
+<td>A session history entry is being traversed from.</td>
+</tr>
+<tr>
+<td><code>pageshow</code></td>
+<td>A session history entry is being traversed to.</td>
+</tr>
+<tr>
+<td><code>popstate</code></td>
+<td>A session history entry is being navigated to (in certain cases).</td>
+</tr>
+</tbody></table>
+<h3 id="CSS-动画事件"><a href="#CSS-动画事件" class="headerlink" title="CSS 动画事件"></a>CSS 动画事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>animationstart</code></td>
+<td>某个 CSS 动画开始时触发。</td>
+</tr>
+<tr>
+<td><code>animationend</code></td>
+<td>某个 CSS 动画完成时触发。</td>
+</tr>
+<tr>
+<td><code>animationiteration</code></td>
+<td>某个 CSS 动画完成后重新开始时触发。</td>
+</tr>
+</tbody></table>
+<h3 id="CSS-过渡事件"><a href="#CSS-过渡事件" class="headerlink" title="CSS 过渡事件"></a>CSS 过渡事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>transitionstart</code></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions">CSS transition</a> has actually started (fired after any delay).</td>
+</tr>
+<tr>
+<td><code>transitioncancel</code></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions">CSS transition</a> has been cancelled.</td>
+</tr>
+<tr>
+<td><code>transitionend</code></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions">CSS transition</a> has completed.</td>
+</tr>
+<tr>
+<td><code>transitionrun</code></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions">CSS transition</a> has begun running (fired before any delay starts).</td>
+</tr>
+</tbody></table>
+<h3 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h3><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>reset</code></td>
+<td>点击重置按钮时</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>点击提交按钮</td>
+</tr>
+</tbody></table>
+<h3 id="打印事件"><a href="#打印事件" class="headerlink" title="打印事件"></a>打印事件</h3><table>
+<thead>
+<tr>
+<th>时间名称</th>
+<th>何时触发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>beforeprint</code></td>
+<td>打印机已经就绪时触发</td>
+</tr>
+<tr>
+<td><code>afterprint</code></td>
+<td>打印机关闭时触发</td>
+</tr>
+</tbody></table>
+<p>文本写作事件</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>compositionstart</code></td>
+<td>The composition of a passage of text is prepared (similar to keydown for a keyboard input, but works with other inputs such as speech recognition).</td>
+</tr>
+<tr>
+<td><code>compositionupdate</code></td>
+<td>A character is added to a passage of text being composed.</td>
+</tr>
+<tr>
+<td><code>compositionend</code></td>
+<td>The composition of a passage of text has been completed or canceled.</td>
+</tr>
+</tbody></table>
+<h3 id="视图事件"><a href="#视图事件" class="headerlink" title="视图事件"></a>视图事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fullscreenchange</code></td>
+<td>An element was turned to fullscreen mode or back to normal mode.</td>
+</tr>
+<tr>
+<td><code>fullscreenerror</code></td>
+<td>It was impossible to switch to fullscreen mode for technical reasons or because the permission was denied.</td>
+</tr>
+<tr>
+<td><code>resize</code></td>
+<td>The document view has been resized.</td>
+</tr>
+<tr>
+<td><code>scroll</code></td>
+<td>The document view or an element has been scrolled.</td>
+</tr>
+</tbody></table>
+<h3 id="剪贴板事件"><a href="#剪贴板事件" class="headerlink" title="剪贴板事件"></a>剪贴板事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cut</code></td>
+<td>已经剪贴选中的文本内容并且复制到了剪贴板。</td>
+</tr>
+<tr>
+<td><code>copy</code></td>
+<td>已经把选中的文本内容复制到了剪贴板。</td>
+</tr>
+<tr>
+<td><code>paste</code></td>
+<td>从剪贴板复制的文本内容被粘贴。</td>
+</tr>
+</tbody></table>
+<h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>keydown</code></td>
+<td>按下任意按键。</td>
+</tr>
+<tr>
+<td><code>keypress</code></td>
+<td>除 Shift、Fn、CapsLock 外的任意键被按住。（连续触发。）</td>
+</tr>
+<tr>
+<td><code>keyup</code></td>
+<td>释放任意按键。</td>
+</tr>
+</tbody></table>
+<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auxclick</code></td>
+<td>A pointing device button (ANY non-primary button) has been pressed and released on an element.</td>
+</tr>
+<tr>
+<td><code>click</code></td>
+<td>在元素上按下并释放任意鼠标按键。</td>
+</tr>
+<tr>
+<td><code>contextmenu</code></td>
+<td>右键点击（在右键菜单显示前触发）。</td>
+</tr>
+<tr>
+<td><code>dblclick</code></td>
+<td>在元素上双击鼠标按钮。</td>
+</tr>
+<tr>
+<td><code>mousedown</code></td>
+<td>在元素上按下任意鼠标按钮。</td>
+</tr>
+<tr>
+<td><code>mouseenter</code></td>
+<td>指针移到有事件监听的元素内。</td>
+</tr>
+<tr>
+<td><code>mouseleave</code></td>
+<td>指针移出元素范围外（不冒泡）。</td>
+</tr>
+<tr>
+<td><code>mousemove</code></td>
+<td>指针在元素内移动时持续触发。</td>
+</tr>
+<tr>
+<td><code>mouseover</code></td>
+<td>指针移到有事件监听的元素或者它的子元素内。</td>
+</tr>
+<tr>
+<td><code>mouseout</code></td>
+<td>指针移出元素，或者移到它的子元素上。</td>
+</tr>
+<tr>
+<td><code>mouseup</code></td>
+<td>在元素上释放任意鼠标按键。</td>
+</tr>
+<tr>
+<td><code>pointerlockchange</code></td>
+<td>鼠标被锁定或者解除锁定发生时。</td>
+</tr>
+<tr>
+<td><code>pointerlockerror</code></td>
+<td>可能因为一些技术的原因鼠标锁定被禁止时。</td>
+</tr>
+<tr>
+<td><code>select</code></td>
+<td>有文本被选中。</td>
+</tr>
+<tr>
+<td><code>wheel</code></td>
+<td>滚轮向任意方向滚动。</td>
+</tr>
+</tbody></table>
+<h3 id="拖放事件"><a href="#拖放事件" class="headerlink" title="拖放事件"></a>拖放事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>drag</code></td>
+<td>正在拖动元素或文本选区（在此过程中持续触发，每 350ms 触发一次）</td>
+</tr>
+<tr>
+<td><code>dragend</code></td>
+<td>拖放操作结束。（松开鼠标按钮或按下 Esc 键）</td>
+</tr>
+<tr>
+<td><code>dragenter</code></td>
+<td>被拖动的元素或文本选区移入有效释放目标区</td>
+</tr>
+<tr>
+<td><code>dragstart</code></td>
+<td>用户开始拖动HTML元素或选中的文本</td>
+</tr>
+<tr>
+<td><code>dragleave</code></td>
+<td>被拖动的元素或文本选区移出有效释放目标区</td>
+</tr>
+<tr>
+<td><code>dragover</code></td>
+<td>被拖动的元素或文本选区正在有效释放目标上被拖动 （在此过程中持续触发，每350ms触发一次）</td>
+</tr>
+<tr>
+<td><code>drop</code></td>
+<td>元素在有效释放目标区上释放</td>
+</tr>
+</tbody></table>
+<h3 id="媒体事件"><a href="#媒体事件" class="headerlink" title="媒体事件"></a>媒体事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>audioprocess</code></td>
+<td>The input buffer of a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ScriptProcessorNode"><code>ScriptProcessorNode</code></a> is ready to be processed.</td>
+</tr>
+<tr>
+<td><code>canplay</code></td>
+<td>The browser can play the media, but estimates that not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.</td>
+</tr>
+<tr>
+<td><code>canplaythrough</code></td>
+<td>The browser estimates it can play the media up to its end without stopping for content buffering.</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>The rendering of an <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/OfflineAudioContext"><code>OfflineAudioContext</code></a> is terminated.</td>
+</tr>
+<tr>
+<td><code>durationchange</code></td>
+<td>The <code>duration</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>emptied</code></td>
+<td>The media has become empty; for example, this event is sent if the media has already been loaded (or partially loaded), and the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XPCOM_Interface_Reference/NsIDOMHTMLMediaElement"><code>load()</code></a> method is called to reload it.</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td>Playback has stopped because the end of the media was reached.</td>
+</tr>
+<tr>
+<td><code>loadeddata</code></td>
+<td>The first frame of the media has finished loading.</td>
+</tr>
+<tr>
+<td><code>loadedmetadata</code></td>
+<td>The metadata has been loaded.</td>
+</tr>
+<tr>
+<td><code>pause</code></td>
+<td>Playback has been paused.</td>
+</tr>
+<tr>
+<td><code>play</code></td>
+<td>Playback has begun.</td>
+</tr>
+<tr>
+<td><code>playing</code></td>
+<td>Playback is ready to start after having been paused or delayed due to lack of data.</td>
+</tr>
+<tr>
+<td><code>ratechange</code></td>
+<td>The playback rate has changed.</td>
+</tr>
+<tr>
+<td><code>seeked</code></td>
+<td>A <em>seek</em> operation completed.</td>
+</tr>
+<tr>
+<td><code>seeking</code></td>
+<td>A <em>seek</em> operation began.</td>
+</tr>
+<tr>
+<td><code>stalled</code></td>
+<td>The user agent is trying to fetch media data, but data is unexpectedly not forthcoming.</td>
+</tr>
+<tr>
+<td><code>suspend</code></td>
+<td>Media data loading has been suspended.</td>
+</tr>
+<tr>
+<td><code>timeupdate</code></td>
+<td>The time indicated by the <code>currentTime</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>volumechange</code></td>
+<td>The volume has changed.</td>
+</tr>
+<tr>
+<td><code>waiting</code></td>
+<td>Playback has stopped because of a temporary lack of data.</td>
+</tr>
+</tbody></table>
+<h3 id="进度事件"><a href="#进度事件" class="headerlink" title="进度事件"></a>进度事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Fired When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>abort</code></td>
+<td>Progression has been terminated (not due to an error).</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>Progression has failed.</td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td>Progression has been successful.</td>
+</tr>
+<tr>
+<td><code>loadend</code></td>
+<td>Progress has stopped (after “error”, “abort” or “load” have been dispatched).</td>
+</tr>
+<tr>
+<td><code>loadstart</code></td>
+<td>Progress has begun.</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td>In progress.</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>Progression is terminated due to preset time expiring.</td>
+</tr>
+</tbody></table>
+<h3 id="存储事件"><a href="#存储事件" class="headerlink" title="存储事件"></a>存储事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">change` (see [Non-standard events](https://developer.mozilla.org/zh-CN/docs/Web/Events#Non-standard_events))</span><br><span class="line">`storage</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新事件"><a href="#更新事件" class="headerlink" title="更新事件"></a>更新事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">checking`</span><br><span class="line">`downloading`</span><br><span class="line">`error`</span><br><span class="line">`noupdate`</span><br><span class="line">`obsolete`</span><br><span class="line">`updateready</span><br></pre></td></tr></table></figure>
+
+<h3 id="值变化事件"><a href="#值变化事件" class="headerlink" title="值变化事件"></a>值变化事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">broadcast`</span><br><span class="line">`CheckboxStateChange`</span><br><span class="line">`hashchange`</span><br><span class="line">`input`</span><br><span class="line">`RadioStateChange`</span><br><span class="line">`readystatechange`</span><br><span class="line">`ValueChange</span><br></pre></td></tr></table></figure>
+
+<h3 id="未分类的事件"><a href="#未分类的事件" class="headerlink" title="未分类的事件"></a>未分类的事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">invalid`</span><br><span class="line">`message`</span><br><span class="line">`message`</span><br><span class="line">`open`</span><br><span class="line">`show</span><br></pre></td></tr></table></figure>
+
+<h3 id="不常见和非标准事件"><a href="#不常见和非标准事件" class="headerlink" title="不常见和非标准事件"></a>不常见和非标准事件</h3><h3 id="Abortable-Fetch-events"><a href="#Abortable-Fetch-events" class="headerlink" title="Abortable Fetch events"></a>Abortable Fetch events</h3><table>
+<thead>
+<tr>
+<th>Event name</th>
+<th>Fired when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>abort</code></td>
+<td>A DOM request is aborted, i.e. using <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController/abort"><code>AbortController.abort()</code></a>.</td>
+</tr>
+</tbody></table>
+<h3 id="WebVR-events"><a href="#WebVR-events" class="headerlink" title="WebVR events"></a>WebVR events</h3><table>
+<thead>
+<tr>
+<th>Event name</th>
+<th>Fired when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vrdisplayactivate</code></td>
+<td>When a VR display is able to be presented to, for example if an HMD has been moved to bring it out of standby, or woken up by being put on.</td>
+</tr>
+<tr>
+<td><code>vrdisplayblur</code></td>
+<td>when presentation to a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> has been paused for some reason by the browser, OS, or VR hardware — for example, while the user is interacting with a system menu or browser, to prevent tracking or loss of experience.</td>
+</tr>
+<tr>
+<td><code>vrdisplayconnect</code></td>
+<td>when a compatible <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> is connected to the computer.</td>
+</tr>
+<tr>
+<td><code>vrdisplaydeactivate</code></td>
+<td>When a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> can no longer be presented to, for example if an HMD has gone into standby or sleep mode due to a period of inactivity.</td>
+</tr>
+<tr>
+<td><code>vrdisplaydisconnect</code></td>
+<td>When a compatible <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> is disconnected from the computer.</td>
+</tr>
+<tr>
+<td><code>vrdisplayfocus</code></td>
+<td>When presentation to a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> has resumed after being blurred.</td>
+</tr>
+<tr>
+<td><code>vrdisplaypresentchange</code></td>
+<td>The presenting state of a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/VRDisplay"><code>VRDisplay</code></a> changes — i.e. goes from presenting to not presenting, or vice versa.</td>
+</tr>
+</tbody></table>
+<h3 id="SVG-事件"><a href="#SVG-事件" class="headerlink" title="SVG 事件"></a>SVG 事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SVGAbort`</span><br><span class="line">`SVGError`</span><br><span class="line">`SVGLoad`</span><br><span class="line">`SVGResize`</span><br><span class="line">`SVGScroll`</span><br><span class="line">`SVGUnload`</span><br><span class="line">`SVGZoom</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库事件"><a href="#数据库事件" class="headerlink" title="数据库事件"></a>数据库事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">abort`</span><br><span class="line">`blocked`</span><br><span class="line">`complete`</span><br><span class="line">`error`</span><br><span class="line">`success`</span><br><span class="line">`upgradeneeded`</span><br><span class="line">`versionchange</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本事件"><a href="#脚本事件" class="headerlink" title="脚本事件"></a>脚本事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">afterscriptexecute`</span><br><span class="line">`beforescriptexecute</span><br></pre></td></tr></table></figure>
+
+<h3 id="菜单事件"><a href="#菜单事件" class="headerlink" title="菜单事件"></a>菜单事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DOMMenuItemActive`</span><br><span class="line">`DOMMenuItemInactive</span><br></pre></td></tr></table></figure>
+
+<h3 id="窗口事件"><a href="#窗口事件" class="headerlink" title="窗口事件"></a>窗口事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">close</span><br></pre></td></tr></table></figure>
+
+<h3 id="弹出事件"><a href="#弹出事件" class="headerlink" title="弹出事件"></a>弹出事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">popuphidden`</span><br><span class="line">`popuphiding`</span><br><span class="line">`popupshowing`</span><br><span class="line">`popupshown</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tab-事件"><a href="#Tab-事件" class="headerlink" title="Tab 事件"></a>Tab 事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visibilitychange</span><br></pre></td></tr></table></figure>
+
+<h3 id="电池事件"><a href="#电池事件" class="headerlink" title="电池事件"></a>电池事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chargingchange`</span><br><span class="line">`chargingtimechange`</span><br><span class="line">`dischargingtimechange`</span><br><span class="line">`levelchange</span><br></pre></td></tr></table></figure>
+
+<h3 id="呼叫事件"><a href="#呼叫事件" class="headerlink" title="呼叫事件"></a>呼叫事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">alerting`</span><br><span class="line">`busy`</span><br><span class="line">`callschanged`</span><br><span class="line">`cfstatechange`</span><br><span class="line">`connected`</span><br><span class="line">`connecting`</span><br><span class="line">`dialing`</span><br><span class="line">`disconnected`</span><br><span class="line">`disconnecting`</span><br><span class="line">`error`</span><br><span class="line">`held`, `holding`</span><br><span class="line">`incoming`</span><br><span class="line">`resuming`</span><br><span class="line">`statechange`</span><br><span class="line">`voicechange</span><br></pre></td></tr></table></figure>
+
+<h3 id="传感器事件"><a href="#传感器事件" class="headerlink" title="传感器事件"></a>传感器事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compassneedscalibration`</span><br><span class="line">`devicemotion`</span><br><span class="line">`deviceorientation`</span><br><span class="line">`orientationchange</span><br></pre></td></tr></table></figure>
+
+<h3 id="智能卡事件"><a href="#智能卡事件" class="headerlink" title="智能卡事件"></a>智能卡事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">icccardlockerror`</span><br><span class="line">`iccinfochange`</span><br><span class="line">`smartcard-insert`</span><br><span class="line">`smartcard-remove`</span><br><span class="line">`stkcommand`</span><br><span class="line">`stksessionend`</span><br><span class="line">`cardstatechange</span><br></pre></td></tr></table></figure>
+
+<h3 id="短信和USSD事件"><a href="#短信和USSD事件" class="headerlink" title="短信和USSD事件"></a>短信和USSD事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delivered`</span><br><span class="line">`received`</span><br><span class="line">`sent`</span><br><span class="line">`ussdreceived</span><br></pre></td></tr></table></figure>
+
+<h3 id="帧事件"><a href="#帧事件" class="headerlink" title="帧事件"></a>帧事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mozbrowserclose`</span><br><span class="line">`mozbrowsercontextmenu`</span><br><span class="line">`mozbrowsererror`</span><br><span class="line">`mozbrowsericonchange`</span><br><span class="line">`mozbrowserlocationchange`</span><br><span class="line">`mozbrowserloadend`</span><br><span class="line">`mozbrowserloadstart`</span><br><span class="line">`mozbrowseropenwindow`</span><br><span class="line">`mozbrowsersecuritychange`</span><br><span class="line">`mozbrowsershowmodalprompt`</span><br><span class="line">`mozbrowsertitlechange</span><br></pre></td></tr></table></figure>
+
+<h3 id="DOM变异事件"><a href="#DOM变异事件" class="headerlink" title="DOM变异事件"></a>DOM变异事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DOMAttributeNameChanged`</span><br><span class="line">`DOMAttrModified`</span><br><span class="line">`DOMCharacterDataModified`</span><br><span class="line">`DOMContentLoaded`</span><br><span class="line">`DOMElementNameChanged`</span><br><span class="line">`DOMNodeInserted`</span><br><span class="line">`DOMNodeInsertedIntoDocument`</span><br><span class="line">`DOMNodeRemoved`</span><br><span class="line">`DOMNodeRemovedFromDocument`</span><br><span class="line">`DOMSubtreeModified</span><br></pre></td></tr></table></figure>
+
+<h3 id="触摸事件"><a href="#触摸事件" class="headerlink" title="触摸事件"></a>触摸事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touchcancel`</span><br><span class="line">`touchend`</span><br><span class="line">`touchmove`</span><br><span class="line">`touchstart</span><br></pre></td></tr></table></figure>
+
+<h3 id="指针事件"><a href="#指针事件" class="headerlink" title="指针事件"></a>指针事件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pointerover`</span><br><span class="line">`pointerenter`</span><br><span class="line">`pointerdown`</span><br><span class="line">`pointermove`</span><br><span class="line">`pointerup`</span><br><span class="line">`pointercancel`</span><br><span class="line">`pointerout`</span><br><span class="line">`pointerleave`</span><br><span class="line">`gotpointercapture`</span><br><span class="line">`lostpointercapture</span><br></pre></td></tr></table></figure>
+
+<h3 id="标准事件"><a href="#标准事件" class="headerlink" title="标准事件"></a>标准事件</h3><p>这些事件在官方Web规范中定义，并且应在各个浏览器中通用。 每个事件都和代表事件接收方的对象（由此您可以查到每个事件提供的数据），定义这个事件的标准或标准链接会一起列出。</p>
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>事件类型</th>
+<th>规范</th>
+<th>触发时机…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>abort</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-abort">DOM L3</a></td>
+<td>资源载入已被中止</td>
+</tr>
+<tr>
+<td><code>abort</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress</a>and<a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-abort">XMLHttpRequest</a></td>
+<td>Progress被终止(不是error造成的)</td>
+</tr>
+<tr>
+<td><code>abort</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#database-interface">IndexedDB</a></td>
+<td>事务已被中止</td>
+</tr>
+<tr>
+<td><code>afterprint</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/html5/webappapis.html#printing">HTML5</a></td>
+<td>相关文档已开始打印或打印预览已被关闭</td>
+</tr>
+<tr>
+<td><code>animationcancel</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-animations/#animation-events">CSS Animations</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/CSS/CSS_animations">CSS animation</a> has aborted.</td>
+</tr>
+<tr>
+<td><code>animationend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-animations/#animation-events">CSS Animations</a></td>
+<td>完成一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/CSS/CSS_animations">CSS 动画</a></td>
+</tr>
+<tr>
+<td><code>animationiteration</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-animations/#animation-events">CSS Animations</a></td>
+<td>重复播放一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/CSS/CSS_animations">CSS 动画</a></td>
+</tr>
+<tr>
+<td><code>animationstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-animations/#animation-events">CSS Animations</a></td>
+<td>一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/CSS/CSS_animations">CSS 动画</a>已开始</td>
+</tr>
+<tr>
+<td><code>appinstalled</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Manifest">Web App Manifest</a></td>
+<td>A web application is successfully installed as a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/Apps/Progressive">progressive web app</a>.</td>
+</tr>
+<tr>
+<td><code>audioprocess</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AudioProcessingEvent"><code>AudioProcessingEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://webaudio.github.io/web-audio-api/#AudioProcessingEvent">Web Audio API audioprocess</a></td>
+<td>一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ScriptProcessorNode"><code>ScriptProcessorNode</code></a> 的输入缓冲区可处理</td>
+</tr>
+<tr>
+<td><code>audioend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>用户代理捕捉到用以语音识别的音频</td>
+</tr>
+<tr>
+<td><code>audiostart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>用户代理开始捕捉用以语音识别的音频</td>
+</tr>
+<tr>
+<td><code>beforeprint</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/html5/webappapis.html#printing">HTML5</a></td>
+<td>相关文档将要开始打印或准备打印预览</td>
+</tr>
+<tr>
+<td><code>beforeunload</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/BeforeUnloadEvent"><code>BeforeUnloadEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/html5/browsers.html#unloading-documents">HTML5</a></td>
+<td>即将卸载 window，document 及其资源</td>
+</tr>
+<tr>
+<td><code>beginEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TimeEvent"><code>TimeEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG/SVG_animation_with_SMIL">SMIL</a> animation element begins.</td>
+</tr>
+<tr>
+<td><code>blocked</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#request-api">IndexedDB</a></td>
+<td>An open connection to a database is blocking a <code>versionchange</code> transaction on the same database.</td>
+</tr>
+<tr>
+<td><code>blur</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-blur">DOM L3</a></td>
+<td>An element has lost focus (does not bubble).</td>
+</tr>
+<tr>
+<td><code>boundary</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The spoken utterance reaches a word or sentence boundary</td>
+</tr>
+<tr>
+<td><code>canplay</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-canplay">HTML5 media</a></td>
+<td>The user agent can play the media, but estimates that not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.</td>
+</tr>
+<tr>
+<td><code>canplaythrough</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-canplaythrough">HTML5 media</a></td>
+<td>The user agent can play the media up to its end without having to stop for further buffering of content.</td>
+</tr>
+<tr>
+<td><code>change</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-2-Events/events.html">DOM L2</a>, <a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#event-input-change">HTML5</a></td>
+<td>The <code>change</code> event is fired for <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input">``</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select">``</a>, and <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea">``</a> elements when a change to the element’s value is committed by the user.</td>
+</tr>
+<tr>
+<td><code>chargingchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/dap/raw-file/tip/battery/Overview.html">Battery status</a></td>
+<td>The battery begins or stops charging.</td>
+</tr>
+<tr>
+<td><code>chargingtimechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/dap/raw-file/tip/battery/Overview.html">Battery status</a></td>
+<td>The <code>chargingTime</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>click</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">DOM L3</a></td>
+<td>A pointing device button has been pressed and released on an element.</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/websockets/">WebSocket</a></td>
+<td>A WebSocket connection has been closed.</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#transaction">IndexedDB</a></td>
+<td>A transaction successfully completed.</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/OfflineAudioCompletionEvent"><code>OfflineAudioCompletionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://webaudio.github.io/web-audio-api/#OfflineAudioCompletionEvent-section">Web Audio API OfflineAudioCompletionEvent</a></td>
+<td>The rendering of an <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/OfflineAudioContext"><code>OfflineAudioContext</code></a> is terminated.</td>
+</tr>
+<tr>
+<td><code>compositionend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent"><code>CompositionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-compositionend">DOM L3</a></td>
+<td>The composition of a passage of text has been completed or canceled.</td>
+</tr>
+<tr>
+<td><code>compositionstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent"><code>CompositionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-compositionstart">DOM L3</a></td>
+<td>The composition of a passage of text is prepared (similar to keydown for a keyboard input, but works with other inputs such as speech recognition).</td>
+</tr>
+<tr>
+<td><code>compositionupdate</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent"><code>CompositionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-compositionupdate">DOM L3</a></td>
+<td>A character is added to a passage of text being composed.</td>
+</tr>
+<tr>
+<td><code>contextmenu</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/forms.html#context-menus">HTML5</a></td>
+<td>The right button of the mouse is clicked (before the context menu is displayed).</td>
+</tr>
+<tr>
+<td><code>copy</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent"><code>ClipboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/clipboard-apis/#copy-event">Clipboard</a></td>
+<td>The text selection has been added to the clipboard.</td>
+</tr>
+<tr>
+<td><code>cut</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent"><code>ClipboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/clipboard-apis/#cut-event">Clipboard</a></td>
+<td>The text selection has been removed from the document and added to the clipboard.</td>
+</tr>
+<tr>
+<td><code>dblclick</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-dblclick">DOM L3</a></td>
+<td>A pointing device button is clicked twice on an element.</td>
+</tr>
+<tr>
+<td><code>devicechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/mediacapture-main/">Media Capture and Streams</a></td>
+<td>A media device such as a camera, microphone, or speaker is connected or removed from the system.</td>
+</tr>
+<tr>
+<td><code>devicemotion</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DeviceMotionEvent"><code>DeviceMotionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://dev.w3.org/geo/api/spec-source-orientation.html">Device Orientation Events</a></td>
+<td>Fresh data is available from a motion sensor.</td>
+</tr>
+<tr>
+<td><code>deviceorientation</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DeviceOrientationEvent"><code>DeviceOrientationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://dev.w3.org/geo/api/spec-source-orientation.html">Device Orientation Events</a></td>
+<td>Fresh data is available from an orientation sensor.</td>
+</tr>
+<tr>
+<td><code>dischargingtimechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/dap/raw-file/tip/battery/Overview.html">Battery status</a></td>
+<td>The <code>dischargingTime</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>DOMActivate</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMActivate">DOM L3</a></td>
+<td>A button, link or state changing element is activated (use <code>click</code> instead).</td>
+</tr>
+<tr>
+<td><code>DOMAttributeNameChanged</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationNameEvent"><code>MutationNameEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/2011/WD-DOM-Level-3-Events-20110531/#event-type-DOMAttributeNameChanged">DOM L3</a> Removed</td>
+<td>The name of an attribute changed (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMAttrModified</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMAttrModified">DOM L3</a></td>
+<td>The value of an attribute has been modified (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMCharacterDataModified</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMCharacterDataModified">DOM L3</a></td>
+<td>A text or another <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/CharacterData">CharacterData</a> has changed (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMContentLoaded</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-end.html#the-end">HTML5</a></td>
+<td>The document has finished loading (but not its dependent resources).</td>
+</tr>
+<tr>
+<td><code>DOMElementNameChanged</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationNameEvent"><code>MutationNameEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/2011/WD-DOM-Level-3-Events-20110531/#event-type-DOMElementNameChanged">DOM L3</a> Removed</td>
+<td>The name of an element changed (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMFocusIn</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMFocusIn">DOM L3</a></td>
+<td>An element has received focus (use <code>focus</code> or <code>focusin</code> instead).</td>
+</tr>
+<tr>
+<td><code>DOMFocusOut</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMFocusOut">DOM L3</a></td>
+<td>An element has lost focus (use <code>blur</code> or <code>focusout</code> instead).</td>
+</tr>
+<tr>
+<td><code>DOMNodeInserted</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMNodeInserted">DOM L3</a></td>
+<td>A node has been added as a child of another node (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMNodeInsertedIntoDocument</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMNodeInsertedIntoDocument">DOM L3</a></td>
+<td>A node has been inserted into the document (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMNodeRemoved</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMNodeRemoved">DOM L3</a></td>
+<td>A node has been removed from its parent node (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMNodeRemovedFromDocument</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMNodeRemovedFromDocument">DOM L3</a></td>
+<td>A node has been removed from the document (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>DOMSubtreeModified</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationEvent"><code>MutationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-DOMSubtreeModified">DOM L3</a></td>
+<td>A change happened in the document (use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/MutationObserver">mutation observers</a> instead).</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-drag">HTML5</a></td>
+<td>An element or text selection is being dragged (every 350ms).</td>
+</tr>
+<tr>
+<td><code>dragend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-dragend">HTML5</a></td>
+<td>A drag operation is being ended (by releasing a mouse button or hitting the escape key).</td>
+</tr>
+<tr>
+<td><code>dragenter</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-dragenter">HTML5</a></td>
+<td>A dragged element or text selection enters a valid drop target.</td>
+</tr>
+<tr>
+<td><code>dragleave</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-dragleave">HTML5</a></td>
+<td>A dragged element or text selection leaves a valid drop target.</td>
+</tr>
+<tr>
+<td><code>dragover</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-dragover">HTML5</a></td>
+<td>An element or text selection is being dragged over a valid drop target (every 350ms).</td>
+</tr>
+<tr>
+<td><code>dragstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-dragstart">HTML5</a></td>
+<td>The user starts dragging an element or text selection.</td>
+</tr>
+<tr>
+<td><code>drop</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent"><code>DragEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#event-drop">HTML5</a></td>
+<td>An element is dropped on a valid drop target.</td>
+</tr>
+<tr>
+<td><code>durationchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-durationchange">HTML5 media</a></td>
+<td>The <code>duration</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>emptied</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-emptied">HTML5 media</a></td>
+<td>The media has become empty; for example, this event is sent if the media has already been loaded (or partially loaded), and the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XPCOM_Interface_Reference/NsIDOMHTMLMediaElement"><code>load()</code></a> method is called to reload it.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The speech recognition service has disconnected.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The utterance has finished being spoken.</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-ended">HTML5 media</a></td>
+<td>Playback has stopped because the end of the media was reached.</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://webaudio.github.io/web-audio-api/">Web Audio API</a></td>
+<td>Playback has stopped because the end of the media was reached.</td>
+</tr>
+<tr>
+<td><code>endEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TimeEvent"><code>TimeEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG/SVG_animation_with_SMIL">SMIL</a> animation element ends.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-error">DOM L3</a></td>
+<td>A resource failed to load.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress</a> and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-error">XMLHttpRequest</a></td>
+<td>Progression has failed.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/websockets/">WebSocket</a></td>
+<td>A WebSocket connection has been closed with prejudice (some data couldn’t be sent for example).</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://dev.w3.org/html5/eventsource/">Server Sent Events</a></td>
+<td>An event source connection has been failed.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#request-api">IndexedDB</a></td>
+<td>A request caused an error and failed.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>A speech recognition error occurs.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisErrorEvent"><code>SpeechSynthesisErrorEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>An error occurs that prevents the utterance from being successfully spoken.</td>
+</tr>
+<tr>
+<td><code>focus</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focus">DOM L3</a></td>
+<td>An element has received focus (does not bubble).</td>
+</tr>
+<tr>
+<td><code>focusin</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focusIn">DOM L3</a></td>
+<td>An element is about to receive focus (bubbles).</td>
+</tr>
+<tr>
+<td><code>focusout</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent"><code>FocusEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-focusout">DOM L3</a></td>
+<td>An element is about to lose focus (bubbles).</td>
+</tr>
+<tr>
+<td><code>fullscreenchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html#api">Full Screen</a></td>
+<td>An element was turned to fullscreen mode or back to normal mode.</td>
+</tr>
+<tr>
+<td><code>fullscreenerror</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html#api">Full Screen</a></td>
+<td>It was impossible to switch to fullscreen mode for technical reasons or because the permission was denied.</td>
+</tr>
+<tr>
+<td><code>gamepadconnected</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GamepadEvent"><code>GamepadEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/gamepad/#the-gamepadconnected-event">Gamepad</a></td>
+<td>A gamepad has been connected.</td>
+</tr>
+<tr>
+<td><code>gamepaddisconnected</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GamepadEvent"><code>GamepadEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/gamepad/#the-gamepaddisconnected-event">Gamepad</a></td>
+<td>A gamepad has been disconnected.</td>
+</tr>
+<tr>
+<td><code>gotpointercapture</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-gotpointercapture-event">Pointer Events</a></td>
+<td>Element receives pointer capture.</td>
+</tr>
+<tr>
+<td><code>hashchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HashChangeEvent"><code>HashChangeEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html#event-hashchange">HTML5</a></td>
+<td>The fragment identifier of the URL has changed (the part of the URL after the #).</td>
+</tr>
+<tr>
+<td><code>lostpointercapture</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-lostpointercapture-event">Pointer Events</a></td>
+<td>Element lost pointer capture.</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/html5/forms.html#common-event-behaviors">HTML5</a></td>
+<td>The value of an element changes or the content of an element with the attribute <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/Element.contentEditable">contenteditable</a> is modified.</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#constraint-validation">HTML5</a></td>
+<td>A submittable element has been checked and doesn’t satisfy its constraints.</td>
+</tr>
+<tr>
+<td><code>keydown</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent"><code>KeyboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-keydown">DOM L3</a></td>
+<td>A key is pressed down.</td>
+</tr>
+<tr>
+<td><code>keypress</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent"><code>KeyboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-keypress">DOM L3</a></td>
+<td>A key is pressed down and that key normally produces a character value (use input instead).</td>
+</tr>
+<tr>
+<td><code>keyup</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent"><code>KeyboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-keyup">DOM L3</a></td>
+<td>A key is released.</td>
+</tr>
+<tr>
+<td><code>languagechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://www.w3.org/TR/html51/#dom-navigator-languages">HTML 5.1 NavigatorLanguage.languages</a></td>
+<td>The user’s preferred languages have changed.</td>
+</tr>
+<tr>
+<td><code>levelchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dvcs.w3.org/hg/dap/raw-file/tip/battery/Overview.html">Battery status</a></td>
+<td>The <code>level</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-load">DOM L3</a></td>
+<td>A resource and its dependent resources have finished loading.</td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress</a> and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-load">XMLHttpRequest</a></td>
+<td>Progression has been successful.</td>
+</tr>
+<tr>
+<td><code>loadeddata</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-loadeddata">HTML5 media</a></td>
+<td>The first frame of the media has finished loading.</td>
+</tr>
+<tr>
+<td><code>loadedmetadata</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-loadedmetadata">HTML5 media</a></td>
+<td>The metadata has been loaded.</td>
+</tr>
+<tr>
+<td><code>loadend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress</a> and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-loadend">XMLHttpRequest</a></td>
+<td>Progress has stopped (after “error”, “abort” or “load” have been dispatched).</td>
+</tr>
+<tr>
+<td><code>loadstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress </a>and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-loadstart">XMLHttpRequest</a></td>
+<td>Progress has begun.</td>
+</tr>
+<tr>
+<td><code>mark</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The spoken utterance reaches a named SSML “mark” tag.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageEvent"><code>MessageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/websockets/">WebSocket</a></td>
+<td>A message is received through a WebSocket.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageEvent"><code>MessageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/workers/#communicating-with-a-dedicated-worker">Web Workers</a></td>
+<td>A message is received from a Web Worker.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageEvent"><code>MessageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/webmessaging/">Web Messaging</a></td>
+<td>A message is received from a child (i)frame or a parent window.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageEvent"><code>MessageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://dev.w3.org/html5/eventsource/">Server Sent Events</a></td>
+<td>A message is received through an event source.</td>
+</tr>
+<tr>
+<td><code>messageerror</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageEvent"><code>MessageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessagePort"><code>MessagePort</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API">Web Workers</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcast_Channel_API">Broadcast Channel</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window"><code>Window</code></a></td>
+<td>A message error is raised when a message is received by an object.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerMessageEvent"><code>ServiceWorkerMessageEvent</code></a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ExtendableMessageEvent"><code>ExtendableMessageEvent</code></a>, depending on context.</td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API">Service Workers</a></td>
+<td>A message is received from a service worker, or a message is received in a service worker from another context.</td>
+</tr>
+<tr>
+<td><code>mousedown</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mousedown">DOM L3</a></td>
+<td>A pointing device button (usually a mouse) is pressed on an element.</td>
+</tr>
+<tr>
+<td><code>mouseenter</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseenter">DOM L3</a></td>
+<td>A pointing device is moved onto the element that has the listener attached.</td>
+</tr>
+<tr>
+<td><code>mouseleave</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseleave">DOM L3</a></td>
+<td>A pointing device is moved off the element that has the listener attached.</td>
+</tr>
+<tr>
+<td><code>mousemove</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mousemove">DOM L3</a></td>
+<td>A pointing device is moved over an element.</td>
+</tr>
+<tr>
+<td><code>mouseout</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseout">DOM L3</a></td>
+<td>A pointing device is moved off the element that has the listener attached or off one of its children.</td>
+</tr>
+<tr>
+<td><code>mouseover</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseover">DOM L3</a></td>
+<td>A pointing device is moved onto the element that has the listener attached or onto one of its children.</td>
+</tr>
+<tr>
+<td><code>mouseup</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseup">DOM L3</a></td>
+<td>A pointing device button is released over an element.</td>
+</tr>
+<tr>
+<td><code>nomatch</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechRecognitionEvent"><code>SpeechRecognitionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The speech recognition service returns a final result with no significant recognition.</td>
+</tr>
+<tr>
+<td><code>notificationclick</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/NotificationEvent"><code>NotificationEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://notifications.spec.whatwg.org/#dom-serviceworkerglobalscope-onnotificationclick">Notifications API onnotificationclick</a></td>
+<td>A system notification spawned by <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerRegistration/showNotification"><code>ServiceWorkerRegistration.showNotification()</code></a> has been clicked.</td>
+</tr>
+<tr>
+<td><code>offline</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#event-offline">HTML5 offline</a></td>
+<td>The browser has lost access to the network.</td>
+</tr>
+<tr>
+<td><code>online</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#event-online">HTML5 offline</a></td>
+<td>The browser has gained access to the network (but particular websites might be unreachable).</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/websockets/">WebSocket</a></td>
+<td>A WebSocket connection has been established.</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://dev.w3.org/html5/eventsource/">Server Sent Events</a></td>
+<td>An event source connection has been established.</td>
+</tr>
+<tr>
+<td><code>orientationchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/screen-orientation/">Screen Orientation</a></td>
+<td>The orientation of the device (portrait/landscape) has changed</td>
+</tr>
+<tr>
+<td><code>pagehide</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PageTransitionEvent"><code>PageTransitionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html#event-pagehide">HTML5</a></td>
+<td>A session history entry is being traversed from.</td>
+</tr>
+<tr>
+<td><code>pageshow</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PageTransitionEvent"><code>PageTransitionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html#event-pageshow">HTML5</a></td>
+<td>A session history entry is being traversed to.</td>
+</tr>
+<tr>
+<td><code>paste</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent"><code>ClipboardEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/clipboard-apis/#paste-event">Clipboard</a></td>
+<td>Data has been transferred from the system clipboard to the document.</td>
+</tr>
+<tr>
+<td><code>pause</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-pause">HTML5 media</a></td>
+<td>Playback has been paused.</td>
+</tr>
+<tr>
+<td><code>pause</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The utterance is paused part way through.</td>
+</tr>
+<tr>
+<td><code>pointercancel</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointercancel-event">Pointer Events</a></td>
+<td>The pointer is unlikely to produce any more events.</td>
+</tr>
+<tr>
+<td><code>pointerdown</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerdown-event">Pointer Events</a></td>
+<td>The pointer enters the active buttons state.</td>
+</tr>
+<tr>
+<td><code>pointerenter</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerenter-event">Pointer Events</a></td>
+<td>Pointing device is moved inside the hit-testing boundary.</td>
+</tr>
+<tr>
+<td><code>pointerleave</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerleave-event">Pointer Events</a></td>
+<td>Pointing device is moved out of the hit-testing boundary.</td>
+</tr>
+<tr>
+<td><code>pointerlockchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerlock/#pointerlockchange-and-pointerlockerror-events">Pointer Lock</a></td>
+<td>The pointer was locked or released.</td>
+</tr>
+<tr>
+<td><code>pointerlockerror</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerlock/#pointerlockchange-and-pointerlockerror-events">Pointer Lock</a></td>
+<td>It was impossible to lock the pointer for technical reasons or because the permission was denied.</td>
+</tr>
+<tr>
+<td><code>pointermove</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointermove-event">Pointer Events</a></td>
+<td>The pointer changed coordinates.</td>
+</tr>
+<tr>
+<td><code>pointerout</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerout-event">Pointer Events</a></td>
+<td>The pointing device moved out of hit-testing boundary or leaves detectable hover range.</td>
+</tr>
+<tr>
+<td><code>pointerover</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerover-event">Pointer Events</a></td>
+<td>The pointing device is moved into the hit-testing boundary.</td>
+</tr>
+<tr>
+<td><code>pointerup</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent"><code>PointerEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/pointerevents/#the-pointerup-event">Pointer Events</a></td>
+<td>The pointer leaves the active buttons state.</td>
+</tr>
+<tr>
+<td><code>play</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-play">HTML5 media</a></td>
+<td>Playback has begun.</td>
+</tr>
+<tr>
+<td><code>playing</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-playing">HTML5 media</a></td>
+<td>Playback is ready to start after having been paused or delayed due to lack of data.</td>
+</tr>
+<tr>
+<td><code>popstate</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PopStateEvent"><code>PopStateEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html#event-popstate">HTML5</a></td>
+<td>A session history entry is being navigated to (in certain cases).</td>
+</tr>
+<tr>
+<td><code>progress</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/progress-events/">Progress</a> and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-progress">XMLHttpRequest</a></td>
+<td>In progress.</td>
+</tr>
+<tr>
+<td><code>push</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PushEvent"><code>PushEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/push-api/">Push API</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API">Service Worker</a> has received a push message.</td>
+</tr>
+<tr>
+<td><code>pushsubscriptionchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PushEvent"><code>PushEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/push-api/">Push API</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PushSubscription">PushSubscription</a> has expired.</td>
+</tr>
+<tr>
+<td><code>ratechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-ratechange">HTML5 media</a></td>
+<td>The playback rate has changed.</td>
+</tr>
+<tr>
+<td><code>readystatechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td>HTML5 and <a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-readystatechange">XMLHttpRequest</a></td>
+<td>The readyState attribute of a document has changed.</td>
+</tr>
+<tr>
+<td><code>repeatEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TimeEvent"><code>TimeEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG/SVG_animation_with_SMIL">SMIL</a> animation element is repeated.</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-2-Events/events.html">DOM L2</a>, <a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#form-submission-0#resetting-a-form">HTML5</a></td>
+<td>A form is reset.</td>
+</tr>
+<tr>
+<td><code>resize</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-resize">DOM L3</a></td>
+<td>The document view has been resized.</td>
+</tr>
+<tr>
+<td><code>resourcetimingbufferfull</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Performance"><code>Performance</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/resource-timing/#dom-performance-onresourcetimingbufferfull">Resource Timing</a></td>
+<td>The browser’s resource timing buffer is full.</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechRecognitionEvent"><code>SpeechRecognitionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The speech recognition service returns a result — a word or phrase has been positively recognized and this has been communicated back to the app.</td>
+</tr>
+<tr>
+<td><code>resume</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>A paused utterance is resumed.</td>
+</tr>
+<tr>
+<td><code>scroll</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-scroll">DOM L3</a></td>
+<td>The document view or an element has been scrolled.</td>
+</tr>
+<tr>
+<td><code>seeked</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-seeked">HTML5 media</a></td>
+<td>A <em>seek</em> operation completed.</td>
+</tr>
+<tr>
+<td><code>seeking</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-seeking">HTML5 media</a></td>
+<td>A <em>seek</em> operation began.</td>
+</tr>
+<tr>
+<td><code>select</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-select">DOM L3</a></td>
+<td>Some text is being selected.</td>
+</tr>
+<tr>
+<td><code>selectstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/selection-api/">Selection API</a></td>
+<td>A selection just started.</td>
+</tr>
+<tr>
+<td><code>selectionchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/selection-api/">Selection API</a></td>
+<td>The selection in the document has been changed.</td>
+</tr>
+<tr>
+<td><code>show</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/html5/interactive-elements.html#context-menus">HTML5</a></td>
+<td>A contextmenu event was fired on/bubbled to an element that has a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/element.contextmenu">contextmenu</a> attribute</td>
+</tr>
+<tr>
+<td><code>slotchange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://dom.spec.whatwg.org/">DOM</a></td>
+<td>The node contents of a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLSlotElement"><code>HTMLSlotElement</code></a> (<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/slot">``</a>) have changed.</td>
+</tr>
+<tr>
+<td><code>soundend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>Any sound — recognisable speech or not — has stopped being detected.</td>
+</tr>
+<tr>
+<td><code>soundstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>Any sound — recognisable speech or not — has been detected.</td>
+</tr>
+<tr>
+<td><code>speechend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>Speech recognised by the speech recognition service has stopped being detected.</td>
+</tr>
+<tr>
+<td><code>speechstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>Sound that is recognised by the speech recognition service as speech has been detected.</td>
+</tr>
+<tr>
+<td><code>stalled</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-stalled">HTML5 media</a></td>
+<td>The user agent is trying to fetch media data, but data is unexpectedly not forthcoming.</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The speech recognition service has begun listening to incoming audio with intent to recognize grammars associated with the current <code>SpeechRecognition</code>.</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisEvent"><code>SpeechSynthesisEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The utterance has begun to be spoken.</td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/StorageEvent"><code>StorageEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/webstorage/#the-storage-event">Web Storage</a></td>
+<td>A storage area (<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/Storage#localStorage">localStorage</a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/Storage#sessionStorage">sessionStorage</a>) has changed.</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-2-Events/events.html">DOM L2</a>, <a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#form-submission-algorithm">HTML5</a></td>
+<td>A form is submitted.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#request-api">IndexedDB</a></td>
+<td>A request successfully completed.</td>
+</tr>
+<tr>
+<td><code>suspend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-suspend">HTML5 media</a></td>
+<td>Media data loading has been suspended.</td>
+</tr>
+<tr>
+<td><code>SVGAbort</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>Page loading has been stopped before the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> was loaded.</td>
+</tr>
+<tr>
+<td><code>SVGError</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An error has occurred before the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> was loaded.</td>
+</tr>
+<tr>
+<td><code>SVGLoad</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> document has been loaded and parsed.</td>
+</tr>
+<tr>
+<td><code>SVGResize</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> document is being resized.</td>
+</tr>
+<tr>
+<td><code>SVGScroll</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> document is being scrolled.</td>
+</tr>
+<tr>
+<td><code>SVGUnload</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGEvent"><code>SVGEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> document has been removed from a window or frame.</td>
+</tr>
+<tr>
+<td><code>SVGZoom</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SVGZoomEvent"><code>SVGZoomEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG/interact.html#SVGEvents">SVG</a></td>
+<td>An <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/SVG">SVG</a> document is being zoomed.</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/XMLHttpRequest/#event-xhr-timeout">XMLHttpRequest</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>timeupdate</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-timeupdate">HTML5 media</a></td>
+<td>The time indicated by the <code>currentTime</code> attribute has been updated.</td>
+</tr>
+<tr>
+<td><code>touchcancel</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/">Touch Events</a></td>
+<td>A touch point has been disrupted in an implementation-specific manners (too many touch points for example).</td>
+</tr>
+<tr>
+<td><code>touchend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/#the-touchend-event">Touch Events</a></td>
+<td>A touch point is removed from the touch surface.</td>
+</tr>
+<tr>
+<td><code>touchmove</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/#the-touchmove-event">Touch Events</a></td>
+<td>A touch point is moved along the touch surface.</td>
+</tr>
+<tr>
+<td><code>touchstart</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/#the-touchstart---------event">Touch Events</a></td>
+<td>A touch point is placed on the touch surface.</td>
+</tr>
+<tr>
+<td><code>transitionend</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TransitionEvent"><code>TransitionEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-transitions/#transition-events">CSS Transitions</a></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/CSS/CSS_transitions">CSS transition</a> has completed.</td>
+</tr>
+<tr>
+<td><code>unload</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-unload">DOM L3</a></td>
+<td>The document or a dependent resource is being unloaded.</td>
+</tr>
+<tr>
+<td><code>upgradeneeded</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#request-api">IndexedDB</a></td>
+<td>An attempt was made to open a database with a version number higher than its current version. A <code>versionchange</code> transaction has been created.</td>
+</tr>
+<tr>
+<td><code>userproximity</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UserProximityEvent"><code>UserProximityEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/proximity/">Proximity Sensor</a></td>
+<td>Fresh data is available from a proximity sensor (indicates whether the nearby object is <code>near</code> the device or not).</td>
+</tr>
+<tr>
+<td><code>voiceschanged</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="https://w3c.github.io/speech-api/">Web Speech API</a></td>
+<td>The list of <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesisVoice"><code>SpeechSynthesisVoice</code></a> objects that would be returned by the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesis/getVoices"><code>SpeechSynthesis.getVoices()</code></a> method has changed (when the <code>voiceschanged</code> event fires.)</td>
+</tr>
+<tr>
+<td><code>versionchange</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/IndexedDB/#database-interface">IndexedDB</a></td>
+<td>A <code>versionchange</code> transaction completed.</td>
+</tr>
+<tr>
+<td><code>visibilitychange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/page-visibility/#sec-visibilitychange-event">Page visibility</a></td>
+<td>The content of a tab has become visible or has been hidden.</td>
+</tr>
+<tr>
+<td><code>volumechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-volumechange">HTML5 media</a></td>
+<td>The volume has changed.</td>
+</tr>
+<tr>
+<td><code>waiting</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#event-media-waiting">HTML5 media</a></td>
+<td>Playback has stopped because of a temporary lack of data.</td>
+</tr>
+<tr>
+<td><code>wheel</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent"><code>WheelEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-wheel">DOM L3</a></td>
+<td>A wheel button of a pointing device is rotated in any direction.</td>
+</tr>
+</tbody></table>
+<h3 id="非标准事件"><a href="#非标准事件" class="headerlink" title="非标准事件"></a>非标准事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Event Type</th>
+<th>Specification</th>
+<th>Fired when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>afterscriptexecute</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><em>Mozilla Specific</em></td>
+<td>A script has been executed.</td>
+</tr>
+<tr>
+<td><code>beforescriptexecute</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><em>Mozilla Specific</em></td>
+<td>A script is about to be executed.</td>
+</tr>
+<tr>
+<td><code>beforeinstallprompt</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><em>Chrome specific</em></td>
+<td>A user is prompted to save a web site to a home screen on mobile.</td>
+</tr>
+<tr>
+<td><code>cardstatechange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/cardState"><code>MozMobileConnection.cardState</code></a> property changes value.</td>
+</tr>
+<tr>
+<td><code>change</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DeviceStorageChangeEvent"><code>DeviceStorageChangeEvent</code></a></td>
+<td><em>Firefox OS specific</em></td>
+<td>This event is triggered each time a file is created, modified or deleted on a given storage area.</td>
+</tr>
+<tr>
+<td><code>connectionInfoUpdate</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The informations about the signal strength and the link speed have been updated.</td>
+</tr>
+<tr>
+<td><code>cfstatechange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The call forwarding state changes.</td>
+</tr>
+<tr>
+<td><code>datachange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/data"><code>MozMobileConnection.data</code></a> object changes values.</td>
+</tr>
+<tr>
+<td><code>dataerror</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/data"><code>MozMobileConnection.data</code></a> object receive an error from the RIL.</td>
+</tr>
+<tr>
+<td><code>DOMMouseScroll</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>The wheel button of a pointing device is rotated (detail attribute is a number of lines). (use <code>wheel</code> instead)</td>
+</tr>
+<tr>
+<td><code>dragdrop</code></td>
+<td><code>DragEvent</code></td>
+<td><em>Mozilla specific</em></td>
+<td>An element is dropped (use <code>drop</code> instead).</td>
+</tr>
+<tr>
+<td><code>dragexit</code></td>
+<td><code>DragEvent</code></td>
+<td><em>Mozilla specific</em></td>
+<td>A drag operation is being ended(use <code>dragend</code> instead).</td>
+</tr>
+<tr>
+<td><code>draggesture</code></td>
+<td><code>DragEvent</code></td>
+<td><em>Mozilla specific</em></td>
+<td>The user starts dragging an element or text selection (use <code>dragstart</code> instead).</td>
+</tr>
+<tr>
+<td><code>icccardlockerror</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/unlockCardLock"><code>MozMobileConnection.unlockCardLock()</code></a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/setCardLock"><code>MozMobileConnection.setCardLock()</code></a> methods fails.</td>
+</tr>
+<tr>
+<td><code>iccinfochange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/iccInfo"><code>MozMobileConnection.iccInfo</code></a> object changes.</td>
+</tr>
+<tr>
+<td><code>localized</code></td>
+<td></td>
+<td><em><a target="_blank" rel="noopener" href="https://github.com/fabi1cazenave/webL10n">Mozilla Specific</a></em></td>
+<td>The page has been localized using data-l10n-* attributes.</td>
+</tr>
+<tr>
+<td><code>mousewheel</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/ie/ms536951(v=vs.85).aspx"><em>IE invented</em></a></td>
+<td>The wheel button of a pointing device is rotated.</td>
+</tr>
+<tr>
+<td><code>MozAudioAvailable</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a></td>
+<td><em>Mozilla specific</em></td>
+<td>The audio buffer is full and the corresponding raw samples are available.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozBeforeResize"><code>MozBeforeResize</code></a></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A window is about to be resized.</td>
+</tr>
+<tr>
+<td><code>mozbrowseractivitydone</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when some activity has been completed (complete description TBD.)</td>
+</tr>
+<tr>
+<td><code>mozbrowserasyncscroll</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the scroll position within a browser<code> </code><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> changes.</td>
+</tr>
+<tr>
+<td><code>mozbrowseraudioplaybackchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when audio starts or stops playing within the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> content.</td>
+</tr>
+<tr>
+<td><code>mozbrowsercaretstatechanged</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the text selected inside the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> content changes.</td>
+</tr>
+<tr>
+<td><code>mozbrowserclose</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when window.close() is called within a browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a>.</td>
+</tr>
+<tr>
+<td><code>mozbrowsercontextmenu</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> try to open a context menu.</td>
+</tr>
+<tr>
+<td><code>mozbrowserdocumentfirstpaint</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a new paint occurs on any document in the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a>.</td>
+</tr>
+<tr>
+<td><code>mozbrowsererror</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when an error occured while trying to load a content within a browser iframe</td>
+</tr>
+<tr>
+<td><code>mozbrowserfindchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a search operation is performed on the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> content (see <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLIFrameElement#Search_methods">HTMLIFrameElement search methods</a>.)</td>
+</tr>
+<tr>
+<td><code>mozbrowserfirstpaint</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> paints content for the first time (this doesn’t include the initial paint from <em>about:blank</em>.)</td>
+</tr>
+<tr>
+<td><code>mozbrowsericonchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the favicon of a browser iframe changes.</td>
+</tr>
+<tr>
+<td><code>mozbrowserlocationchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when an browser iframe’s location changes.</td>
+</tr>
+<tr>
+<td><code>mozbrowserloadend</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the browser iframe has finished loading all its assets.</td>
+</tr>
+<tr>
+<td><code>mozbrowserloadstart</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the browser iframe starts to load a new page.</td>
+</tr>
+<tr>
+<td><code>mozbrowsermanifestchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a the path to the app manifest changes, in the case of a browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> with an open web app embedded in it.</td>
+</tr>
+<tr>
+<td><code>mozbrowsermetachange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta">``</a> elelment is added to, removed from or changed in the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a>‘s content.</td>
+</tr>
+<tr>
+<td><code>mozbrowseropensearch</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a link to a search engine is found.</td>
+</tr>
+<tr>
+<td><code>mozbrowseropentab</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when a new tab is opened within a browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> as a result of the user issuing a command to open a link target in a new tab (for example ctrl/cmd + click.)</td>
+</tr>
+<tr>
+<td><code>mozbrowseropenwindow</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open"><code>window.open()</code></a> is called within a browser iframe.</td>
+</tr>
+<tr>
+<td><code>mozbrowserresize</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a>‘s window size has changed.</td>
+</tr>
+<tr>
+<td><code>mozbrowserscroll</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> content scrolls.</td>
+</tr>
+<tr>
+<td><code>mozbrowserscrollareachanged</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the available scrolling area in the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> changes. This can occur on resize and when the page size changes (while loading for example.)</td>
+</tr>
+<tr>
+<td><code>mozbrowserscrollviewchange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when asynchronous scrolling (i.e. APCZ) starts or stops.</td>
+</tr>
+<tr>
+<td><code>mozbrowsersecuritychange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the SSL state changes within a browser iframe.</td>
+</tr>
+<tr>
+<td><code>mozbrowserselectionstatechanged</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the text selected inside the browser <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> content changes. Note that this is deprecated, and newer implementations use <code>mozbrowsercaretstatechanged</code> instead.</td>
+</tr>
+<tr>
+<td><code>mozbrowsershowmodalprompt</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/alert"><code>alert()</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/confirm"><code>confirm()</code></a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/prompt"><code>prompt()</code></a> are called within a browser iframe</td>
+</tr>
+<tr>
+<td><code>mozbrowsertitlechange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the document.title changes within a browser iframe.</td>
+</tr>
+<tr>
+<td><code>mozbrowserusernameandpasswordrequired</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when an HTTP authentification is requested.</td>
+</tr>
+<tr>
+<td><code>mozbrowservisibilitychange</code></td>
+<td></td>
+<td><em>Firefox OS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Browser_API">Browser API</a>-specific</em></td>
+<td>Sent when the visibility state of the current browser iframe <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">``</a> changes, for example due to a call to <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLIFrameElement/setVisible"><code>setVisible()</code></a>.</td>
+</tr>
+<tr>
+<td><code>MozGamepadButtonDown</code></td>
+<td></td>
+<td><em>To be specified</em></td>
+<td>A gamepad button is pressed down.</td>
+</tr>
+<tr>
+<td><code>MozGamepadButtonUp</code></td>
+<td></td>
+<td><em>To be specified</em></td>
+<td>A gamepad button is released.</td>
+</tr>
+<tr>
+<td><code>MozMousePixelScroll</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>The wheel button of a pointing device is rotated (detail attribute is a number of pixels). (use wheel instead)</td>
+</tr>
+<tr>
+<td><code>MozOrientation</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>Fresh data is available from an orientation sensor (see deviceorientation).</td>
+</tr>
+<tr>
+<td><code>MozScrolledAreaChanged</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><em>Mozilla specific</em></td>
+<td>The document view has been scrolled or resized.</td>
+</tr>
+<tr>
+<td><code>moztimechange</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>The time of the device has been changed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/DOM/Touch_events_(Mozilla_experimental)">MozTouchDown</a></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A touch point is placed on the touch surface (use touchstart instead).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/DOM/Touch_events_(Mozilla_experimental)">MozTouchMove</a></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A touch point is moved along the touch surface (use touchmove instead).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/DOM/Touch_events_(Mozilla_experimental)">MozTouchUp</a></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A touch point is removed from the touch surface (use touchend instead).</td>
+</tr>
+<tr>
+<td><code>alerting</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>The correspondent is being alerted (his/her phone is ringing).</td>
+</tr>
+<tr>
+<td><code>busy</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>The line of the correspondent is busy.</td>
+</tr>
+<tr>
+<td><code>callschanged</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call has been added or removed from the list of current calls.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/onconnected">onconnected</a> <code>connected</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call has been connected.</td>
+</tr>
+<tr>
+<td><code>connecting</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call is about to connect.</td>
+</tr>
+<tr>
+<td><code>delivered</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SMSEvent"><code>SMSEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>An SMS has been successfully delivered.</td>
+</tr>
+<tr>
+<td><code>dialing</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>The number of a correspondent has been dialed.</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>Wifi has been disabled on the device.</td>
+</tr>
+<tr>
+<td><code>disconnected</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call has been disconnected.</td>
+</tr>
+<tr>
+<td><code>disconnecting</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call is about to disconnect.</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>Wifi has been enabled on the device.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>An error occurred.</td>
+</tr>
+<tr>
+<td><code>held</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call has been held.</td>
+</tr>
+<tr>
+<td><code>holding</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call is about to be held.</td>
+</tr>
+<tr>
+<td><code>incoming</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call is being received.</td>
+</tr>
+<tr>
+<td><code>received</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SMSEvent"><code>SMSEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>An SMS has been received.</td>
+</tr>
+<tr>
+<td><code>resuming</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>A call is about to resume.</td>
+</tr>
+<tr>
+<td><code>sent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/SMSEvent"><code>SMSEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>An SMS has been sent.</td>
+</tr>
+<tr>
+<td><code>statechange</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CallEvent"><code>CallEvent</code></a></td>
+<td><em>To be specified</em></td>
+<td>The state of a call has changed.</td>
+</tr>
+<tr>
+<td><code>statuschange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The status of the Wifi connection changed.</td>
+</tr>
+<tr>
+<td><code>overflow</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><em>Mozilla specific</em></td>
+<td>An element has been overflowed by its content or has been rendered for the first time in this state (only works for elements styled with <code>overflow</code> != <code>visible</code>).</td>
+</tr>
+<tr>
+<td><code>smartcard-insert</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/JavaScript_crypto">smartcard</a> has been inserted.</td>
+</tr>
+<tr>
+<td><code>smartcard-remove</code></td>
+<td></td>
+<td><em>Mozilla specific</em></td>
+<td>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/JavaScript_crypto">smartcard</a> has been removed.</td>
+</tr>
+<tr>
+<td><code>stkcommand</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The STK Proactive Command is issued from ICC.</td>
+</tr>
+<tr>
+<td><code>stksessionend</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The STK Session is terminated by ICC.</td>
+</tr>
+<tr>
+<td><code>touchenter</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/#the-touchstart---------event">Touch Events</a> Removed</td>
+<td></td>
+</tr>
+<tr>
+<td><code>touchleave</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent"><code>TouchEvent</code></a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3.org/TR/touch-events/#the-touchstart---------event">Touch Events</a> Removed</td>
+<td></td>
+</tr>
+<tr>
+<td><code>underflow</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent"><code>UIEvent</code></a></td>
+<td><em>Mozilla specific</em></td>
+<td>An element is no longer overflowed by its content (only works for elements styled with <code>overflow</code> != <code>visible</code>).</td>
+</tr>
+<tr>
+<td><code>uploadprogress</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent"><code>ProgressEvent</code></a></td>
+<td><em>Mozilla Specific</em></td>
+<td>Upload is in progress (see <code>progress</code>).</td>
+</tr>
+<tr>
+<td><code>ussdreceived</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>A new USSD message is received</td>
+</tr>
+<tr>
+<td><code>voicechange</code></td>
+<td></td>
+<td><em>Firefox OS specific</em></td>
+<td>The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MozMobileConnection/voice"><code>MozMobileConnection.voice</code></a> object changes values.</td>
+</tr>
+<tr>
+<td><code>msContentZoom</code></td>
+<td></td>
+<td><em>Microsoft specific</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MSManipulationStateChanged</code></td>
+<td></td>
+<td><em>Microsoft specific</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MSPointerHover</code></td>
+<td></td>
+<td><em>Microsoft specific</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Mozilla-特定事件"><a href="#Mozilla-特定事件" class="headerlink" title="Mozilla 特定事件"></a>Mozilla 特定事件</h3><p>注意：这些事件不会暴露给 Web 内容使用，只能在 chrome 内容的上下文中使用。</p>
+<h3 id="XUL-事件"><a href="#XUL-事件" class="headerlink" title="XUL 事件"></a>XUL 事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Event Type</th>
+<th>Specification</th>
+<th>Fired when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>broadcast</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XUL/Tutorial/Broadcasters_and_Observers#Broadcast_event">XUL</a></td>
+<td>An <code>observer</code> noticed a change to the attributes of a watched broadcaster.</td>
+</tr>
+<tr>
+<td><code>CheckboxStateChange</code></td>
+<td></td>
+<td>XUL</td>
+<td>The state of a <code>checkbox</code> has been changed either by a user action or by a script (useful for accessibility).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/close_event">close</a></td>
+<td></td>
+<td>XUL</td>
+<td>The close button of the window has been clicked.</td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td></td>
+<td>XUL</td>
+<td>An element has been activated.</td>
+</tr>
+<tr>
+<td><code>commandupdate</code></td>
+<td></td>
+<td>XUL</td>
+<td>A command update occurred on a <code>commandset</code> element.</td>
+</tr>
+<tr>
+<td><code>DOMMenuItemActive</code></td>
+<td></td>
+<td>XUL</td>
+<td>A menu or menuitem has been hovered or highlighted.</td>
+</tr>
+<tr>
+<td><code>DOMMenuItemInactive</code></td>
+<td></td>
+<td><em>XUL</em></td>
+<td>A menu or menuitem is no longer hovered or highlighted.</td>
+</tr>
+<tr>
+<td><code>popuphidden</code></td>
+<td><code>PopupEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XUL/PopupGuide/PopupEvents"><em>XUL</em></a></td>
+<td>A menupopup, panel or tooltip has been hidden.</td>
+</tr>
+<tr>
+<td><code>popuphiding</code></td>
+<td><code>PopupEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XUL/PopupGuide/PopupEvents"><em>XUL</em></a></td>
+<td>A menupopup, panel or tooltip is about to be hidden.</td>
+</tr>
+<tr>
+<td><code>popupshowing</code></td>
+<td><code>PopupEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XUL/PopupGuide/PopupEvents"><em>XUL</em></a></td>
+<td>A menupopup, panel or tooltip is about to become visible.</td>
+</tr>
+<tr>
+<td><code>popupshown</code></td>
+<td><code>PopupEvent</code></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/XUL/PopupGuide/PopupEvents"><em>XUL</em></a></td>
+<td>A menupopup, panel or tooltip has become visible.</td>
+</tr>
+<tr>
+<td><code>RadioStateChange</code></td>
+<td></td>
+<td>XUL</td>
+<td>The state of a <code>radio</code> has been changed either by a user action or by a script (useful for accessibility).</td>
+</tr>
+<tr>
+<td><code>ValueChange</code></td>
+<td></td>
+<td>XUL</td>
+<td>The value of an element has changed (a progress bar for example, useful for accessibility).</td>
+</tr>
+</tbody></table>
+<h3 id="附加组件特定事件"><a href="#附加组件特定事件" class="headerlink" title="附加组件特定事件"></a>附加组件特定事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Event Type</th>
+<th>Specification</th>
+<th>Fired when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozSwipeGesture">MozSwipeGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A touch point is swiped across the touch surface</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozMagnifyGestureStart">MozMagnifyGestureStart</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points start to move away from each other.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozMagnifyGestureUpdate">MozMagnifyGestureUpdate</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points move away from each other (after a MozMagnifyGestureStart).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozMagnifyGesture">MozMagnifyGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points moved away from each other (after a sequence of MozMagnifyGestureUpdate).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozRotateGestureStart">MozRotateGestureStart</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points start to rotate around a point.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozRotateGestureUpdate">MozRotateGestureUpdate</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points rotate around a point (after a MozRotateGestureStart).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozRotateGesture">MozRotateGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points rotate around a point (after a sequence of MozRotateGestureUpdate).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozTapGesture">MozTapGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Two touch points are tapped on the touch surface.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozPressTapGesture">MozPressTapGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A “press-tap” gesture happened on the touch surface (first finger down, second finger down, second finger up, first finger up).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozEdgeUIGesture">MozEdgeUIGesture</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A touch point is swiped across the touch surface to invoke the edge UI (Win8 only).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozAfterPaint">MozAfterPaint</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Content has been repainted.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMPopupBlocked">DOMPopupBlocked</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A popup has been blocked</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMWindowCreated">DOMWindowCreated</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A window has been created.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMWindowClose">DOMWindowClose</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A window is about to be closed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMTitleChanged">DOMTitleChanged</a></td>
+<td></td>
+<td><em>Addons specifc</em></td>
+<td>The title of a window has changed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMLinkAdded">DOMLinkAdded</a></td>
+<td></td>
+<td><em>Addons specifc</em></td>
+<td>A link has been added a document.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMLinkRemoved">DOMLinkRemoved</a></td>
+<td></td>
+<td><em>Addons specifc</em></td>
+<td>A link has been removed inside from a document.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMMetaAdded">DOMMetaAdded</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A <code>meta</code> element has been added to a document.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMMetaRemoved">DOMMetaRemoved</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A <code>meta</code> element has been removed from a document.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMWillOpenModalDialog">DOMWillOpenModalDialog</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A modal dialog is about to open.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMModalDialogClosed">DOMModalDialogClosed</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A modal dialog has been closed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMAutoComplete">DOMAutoComplete</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>The content of an element has been auto-completed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/DOMFrameContentLoaded">DOMFrameContentLoaded</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>The frame has finished loading (but not its dependent resources).</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/AlertActive">AlertActive</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A <code>notification</code> element is shown.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/AlertClose">AlertClose</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A <code>notification</code> element is closed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/fullscreen">fullscreen</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Browser fullscreen mode has been entered or left.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/sizemodechange">sizemodechange</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>Window has entered/left fullscreen mode, or has been minimized/unminimized.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/MozEnteredDomFullscreen">MozEnteredDomFullscreen</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/DOM/Using_full-screen_mode">DOM fullscreen</a> mode has been entered.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSWindowClosing">SSWindowClosing</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>The session store will stop tracking this window.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSTabClosing">SSTabClosing</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>The session store will stop tracking this tab.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSTabRestoring">SSTabRestoring</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab is about to be restored.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSTabRestored">SSTabRestored</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been restored.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSWindowStateReady">SSWindowStateReady</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A window state has switched to “ready”.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/SSWindowStateBusy">SSWindowStateBusy</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A window state has switched to “busy”.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabOpen">TabOpen</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been opened.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabClose">TabClose</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been closed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabSelect">TabSelect</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been selected.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabShow">TabShow</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been shown.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabHide">TabHide</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been hidden.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabPinned">TabPinned</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been pinned.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/TabUnpinned">TabUnpinned</a></td>
+<td></td>
+<td><em>Addons specific</em></td>
+<td>A tab has been unpinned.</td>
+</tr>
+</tbody></table>
+<h3 id="开发者工具特定事件"><a href="#开发者工具特定事件" class="headerlink" title="开发者工具特定事件"></a>开发者工具特定事件</h3><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Event Type</th>
+<th>Specification</th>
+<th>Fired when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/CssRuleViewRefreshed">CssRuleViewRefreshed</a></td>
+<td></td>
+<td><em>devtools specific</em></td>
+<td>The “Rules” view of the style inspector has been updated.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/CssRuleViewChanged">CssRuleViewChanged</a></td>
+<td></td>
+<td><em>devtools specific</em></td>
+<td>The “Rules” view of the style inspector has been changed.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/CssRuleViewCSSLinkClicked">CssRuleViewCSSLinkClicked</a></td>
+<td></td>
+<td><em>devtools specific</em></td>
+<td>A link to a CSS file has been clicked in the “Rules” view of the style inspector.</td>
+</tr>
+</tbody></table>
+<p>转载自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/torchstar/p/11799394.html">vue中v-on支持的事件总结 - torchstar - 博客园 (cnblogs.com)</a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-08-02</span><i class="fa fa-tag"></i><a class="tag" href="/tags/前端篇/" title="前端篇">前端篇 </a><a class="tag" href="/tags/vue/" title="vue">vue </a><a class="tag" href="/tags/优秀博文转载/" title="优秀博文转载">优秀博文转载 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/Vue中v-on事件总结/,李子味李子,Vue中v-on事件总结,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/Vue%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AE%A4%E8%AF%86ref/" title="Vue学习之认识ref">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/Vue%E4%B8%A4%E7%BB%84%E9%97%B4%E9%80%9A%E8%BF%87%E4%BC%A0%E5%80%BC%E8%AE%BE%E7%BD%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E8%83%8C%E6%99%AF/" title="Vue两组间通过传值设置另一个组件背景">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'w5No6Op13MjGyivKUmW5WY6M-MdYXbMMI',
+  app_key:'1bBarriQNVGN5LehKDNuMESW',
+  placeholder:'说点什么吧...',
+  path: window.location.pathname,
+  serverURLs: '',
+  visitor:true,
+  recordIP:true,
+  pageSize:10,
+  avatar:'mp'
+})</script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script></body></html>

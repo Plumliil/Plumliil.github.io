@@ -6,7 +6,7 @@
 title: 李子味李子
 subtitle: ''
 description: '学习笔记,心得分享,踩坑记录'
-keywords:
+keywords: '笔记 心得 踩坑'
 author: PlumLi
 language: zh-CN
 timezone: ''
@@ -14,6 +14,7 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://Plumliil.github.io
+# url: https://plumli.xyz/
 root: /
 permalink: :categories/:title/
 permalink_defaults:
@@ -41,7 +42,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 # 自行添加
 # marked:
 #  prependRoot: true

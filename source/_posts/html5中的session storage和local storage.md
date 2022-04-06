@@ -2,9 +2,8 @@
 title: html5中的session storage和local storage
 date: 2021-07-19 22:48:08
 tags:
-  - local storage
-  - session storage
-categories: html5
+  - 前端篇
+  - JavaScript
 ---
 
 随着互联网的快速发展,基于网页的应用越来越普遍,同时也变的越来越复杂,为了满足各种各样的需求,会经常性在本地存储大量的数据, HTML5规范提出了相关解决方案。

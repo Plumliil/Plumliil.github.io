@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Plumli"><title>如何进行网站优化 · 李子味李子</title><meta name="description" content="在此之前先谈谈为什么要对网站进行优化我认为有两个主要的方面
+**一:**为了提高用户的浏览体验,我想没有一个用户在访问网站时等个几秒钟后,网站页面还为加载出来,此时对网站的优化是优化性能,优化交互,使用户喜欢上这个网站,使网站变得更加的友好.
+二:为了提升网站的排名,做一个网站最大的目的是为了展示信"><meta name="keywords" content="学习笔记,心得分享,踩坑记录"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">李子味李子</a></h3><div class="description"><p>一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2022 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">plumliil@foxmail.com</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">豫ICP备2021031361号-1</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>如何进行网站优化</a></h3></div><div class="post-content"><h4 id="在此之前先谈谈为什么要对网站进行优化"><a href="#在此之前先谈谈为什么要对网站进行优化" class="headerlink" title="在此之前先谈谈为什么要对网站进行优化"></a>在此之前先谈谈为什么要对网站进行优化</h4><p>我认为有两个主要的方面</p>
+<p>**一:**为了提高用户的浏览体验,我想没有一个用户在访问网站时等个几秒钟后,网站页面还为加载出来,此时对网站的优化是优化性能,优化交互,使用户喜欢上这个网站,使网站变得更加的友好.</p>
+<p><strong>二:<strong>为了提升网站的排名,做一个网站最大的目的是为了展示信息,那么如何更好的展示信息呢,这里就需要对网站进行</strong>搜索引擎优化(SEO)</strong>,通过优化提升浏览器在搜索引擎中的排名,使自己的网站优先展示.</p>
+<h4 id="接下来说一下怎么对网站进行性能优化"><a href="#接下来说一下怎么对网站进行性能优化" class="headerlink" title="接下来说一下怎么对网站进行性能优化"></a>接下来说一下怎么对网站进行性能优化</h4><p>进行性能优化无非是为了提高浏览器的加载速度和渲染速度.</p>
+<p>性能优化主要包括两个方面:</p>
+<span id="more"></span>
+
+<ol>
+<li>网络请求优化<ul>
+<li>减少HTTP请求:在加载时可以先确定加载的顺序,这个是非常重要的,通过加载顺序可以判断出哪些请求是可以优先加载,哪些请求可以在页面渲染后加载,以此来提升用户体验,减少HTTP加载时间</li>
+<li>减小cookie的体积:cookie内有关的信息是放在HTTP请求头中在服务器和浏览器之间交流,保存的cookie越大,请求完成的时间越长,所以通过减小cookie的体积可以来减小用户的响应时间也显得很必要.</li>
+<li>使用CDN和DNS:CDN为内容分发网络,主要解决的是如何将数据快速可靠的发给用户,通过CDN的分发,用户可以从较优的服务器获取资源而无需从源站获取,从而达到快速访问,DNS为域名系统,是互联网的一项服务,减少用户的等待时间，提升用户体验(具体有关CDN和DNS的优化可以浏览<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43624878/article/details/99322436">前端项目性能分析之聊聊DNS和CDN缓存</a>)</li>
+</ul>
+</li>
+<li>静态资源加载优化<ul>
+<li>将样式放在顶部,JS放在页面底部:用户在进入一个网页是首先看到是内容,浏览器在渲染时会将所有css下载完之后才对页面进行渲染,将样式放在头部可以加快浏览器渲染速度,而将脚本放在底部是为了优先渲染内容,其次再渲染交互</li>
+<li>少使用css表达式,虽然css表达式带来了很多方便,但是同时当css表达式计算次数会对性能有所损耗</li>
+<li>在html引入css时使用link不使用@import:link是html方式,@import是css方式,link最大限度支持并行下载,@import过多嵌套会导致串行下载,出现文档样式短暂失效,影响用户的体验</li>
+<li>图片的优化:图片的加载也会影响浏览器的渲染,我们可以使用精灵图来一次性加载多张图片通过减少http请求来提高渲染速度,当图片较小时可以使用base64格式来加载图片,而当图片较大时可以对图片进行压缩,也可以根据可视区的判断选择对图片进行懒加载</li>
+<li>对代码进行打包,减少代码体积</li>
+</ul>
+</li>
+</ol>
+<h4 id="最后来说一下搜索引擎优化"><a href="#最后来说一下搜索引擎优化" class="headerlink" title="最后来说一下搜索引擎优化"></a>最后来说一下搜索引擎优化</h4><p>做搜索引擎优化的目的主要是为了提高网站权重,增加流量,改善体验</p>
+<ol>
+<li>合理的title,description,keywords:通过对标题描述关键词的设置可以更好地让蜘蛛更好的抓取.</li>
+<li>语义化:代码要符合w3c规范,可以使搜索引擎更加容易的理解网页</li>
+<li>扁平化目录结构:网站的结构层次越少越容易被蜘蛛抓去,从而被收录,可以通过优化目录结构来进行搜索引擎优化</li>
+<li>少用iframe:搜索引擎不会抓取iframe里的内容</li>
+<li>…</li>
+</ol>
+<p>对网站优化的记录先到这里,日后随着知识的增长会不断补充…</p>
+<p>参考链接:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Strugglinggirl/p/11011473.html">https://www.cnblogs.com/Strugglinggirl/p/11011473.html</a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-03-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/前端篇/" title="前端篇">前端篇 </a><a class="tag" href="/tags/网站优化/" title="网站优化">网站优化 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/如何进行网站性能优化/,李子味李子,如何进行网站优化,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/%E8%BF%91%E6%9C%9Funiapp%E4%BD%BF%E7%94%A8%E5%8F%8A%E6%80%BB%E7%BB%93/" title="近期uniapp使用及总结">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/express%E8%B7%A8%E5%9F%9F/" title="express跨域">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'w5No6Op13MjGyivKUmW5WY6M-MdYXbMMI',
+  app_key:'1bBarriQNVGN5LehKDNuMESW',
+  placeholder:'说点什么吧...',
+  path: window.location.pathname,
+  serverURLs: '',
+  visitor:true,
+  recordIP:true,
+  pageSize:10,
+  avatar:'mp'
+})</script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script></body></html>

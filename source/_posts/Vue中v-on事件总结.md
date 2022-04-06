@@ -2,9 +2,9 @@
 title: Vue中v-on事件总结
 date: 2021-08-02 10:13:48
 tags:
+  - 前端篇
   - vue
   - 优秀博文转载
-categories: Vue
 ---
 
 ### 资源事件

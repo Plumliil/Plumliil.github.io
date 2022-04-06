@@ -2,9 +2,8 @@
 title: 'vue报错解决Duplicate keys detected:[object Object]'
 date: 2021-08-16 10:54:37
 tags:
+  - 前端篇
   - vue
-  - 问题解决
-categories: Vue
 ---
 
 ​	最近在做vue项目时遇到了报错
