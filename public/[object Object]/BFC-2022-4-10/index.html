@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Plumli"><title>什么是BFC · 李子味李子</title><meta name="description" content="BFC(块级格式化上下文)什么是BFC指的是一个块级渲染作用域,该区域内拥有一套完整的规则来约束块级盒子的布局,且与区域外部无关.
+为什么要使用BFC当一个盒子不设置高度,当其中的子元素都浮动时,这个盒子便无法撑起自身.
+
+这个问题可以使用BFC来解决,形成一个块级格式化上下文.
+那么如何创建BFC"><meta name="keywords" content="学习笔记,心得分享,踩坑记录"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">李子味李子</a></h3><div class="description"><p>一定要爱着点什么，恰似草木对光阴的钟情<br> Nothing is impossible</p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/plumliil"><i class="fa fa-github"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2022 </span><i class="fa fa-star"></i><span> Plumli</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank">plumliil@foxmail.com</a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;">豫ICP备2021031361号-1</span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>什么是BFC</a></h3></div><div class="post-content"><h2 id="BFC-块级格式化上下文"><a href="#BFC-块级格式化上下文" class="headerlink" title="BFC(块级格式化上下文)"></a>BFC(块级格式化上下文)</h2><h4 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC"></a>什么是BFC</h4><p>指的是一个块级渲染作用域,该区域内拥有一套完整的规则来约束块级盒子的布局,且与区域外部无关.</p>
+<h4 id="为什么要使用BFC"><a href="#为什么要使用BFC" class="headerlink" title="为什么要使用BFC"></a>为什么要使用BFC</h4><p>当一个盒子不设置高度,当其中的子元素都浮动时,这个盒子便无法撑起自身.</p>
+<p><img src="https://s2.loli.net/2022/04/10/VB3xt8R4fheSGKg.png" alt="1649573049146.png"></p>
+<p>这个问题可以使用BFC来解决,形成一个块级格式化上下文.</p>
+<h4 id="那么如何创建BFC"><a href="#那么如何创建BFC" class="headerlink" title="那么如何创建BFC"></a>那么如何创建BFC</h4><ul>
+<li><code>float</code>的值不为<code>none</code></li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/10/nYNCFSL9a7pd5vb.png"></p>
+<ul>
+<li><p><code>display</code>的值为<code>inline-block</code>,<code>flex</code>,<code>inline-flex</code></p>
+<p><img src="https://s2.loli.net/2022/04/10/XBwM2Tf7yuvcNP4.png"></p>
+</li>
+<li><p>设置<code>overflow:hidden</code></p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/10/xfipgHNPVldOv64.png"></p>
+<h4 id="BFC的其他作用"><a href="#BFC的其他作用" class="headerlink" title="BFC的其他作用"></a>BFC的其他作用</h4><ul>
+<li><p>取消盒子的<code>margin</code>塌陷</p>
+<p>如图所示,父元素盒子不做设置,当子盒子设置margin-top后,父元素盒子也会随之变化.</p>
+<p><img src="https://s2.loli.net/2022/04/10/cGspifHSk8uZ6nC.png"></p>
+<p>此时给父元素设置<code>overflow:hidden</code>创建块级格式化上下文可以有效解决margin塌陷问题</p>
+<p><img src="https://s2.loli.net/2022/04/10/ryShZXeu7b3c6YU.png"></p>
+</li>
+<li><p>清除浮动</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/10/EQBRmCe7KOrYdTA.png"></p>
+<p>如图所示,当父盒子中有元素浮动,有元素不浮动时,不浮动的元素会出现在浮动元素下方此时给浮动元素设置<code>overflow:hidden</code>可以清除浮动,显示出不浮动元素.</p>
+<p><strong>当然清除浮动还有其他几种方法,这些后续再谈</strong></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-04-10</span><i class="fa fa-tag"></i><a class="tag" href="/tags/前端篇/" title="前端篇">前端篇 </a><a class="tag" href="/tags/HTML-CSS/" title="HTML &amp; CSS">HTML &amp; CSS </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://Plumliil.github.io/[object Object]/BFC-2022-4-10/,李子味李子,什么是BFC,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/%5Bobject%20Object%5D/this%E7%9A%84%E7%BB%91%E5%AE%9A/" title="this的绑定">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'w5No6Op13MjGyivKUmW5WY6M-MdYXbMMI',
+  app_key:'1bBarriQNVGN5LehKDNuMESW',
+  placeholder:'说点什么吧...',
+  path: window.location.pathname,
+  serverURLs: '',
+  visitor:true,
+  recordIP:true,
+  pageSize:10,
+  avatar:'mp'
+})</script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script></body></html>

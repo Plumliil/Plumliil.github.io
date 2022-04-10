@@ -1,9 +1,9 @@
 ---
-title: class小知识
+title: vue动态绑定类名
 date: 2021-08-15 23:56:12
 tags:
  - 前端篇
- - Css	
+ - vue
 ---
 
 ### vue动态绑定类名
