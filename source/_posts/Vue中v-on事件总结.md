@@ -3,7 +3,7 @@ title: Vue中v-on事件总结
 date: 2021-08-02 10:13:48
 tags:
   - 前端篇
-  - vue
+  - Vue
   - 优秀博文转载
 ---
 

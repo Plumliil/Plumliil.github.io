@@ -9,7 +9,7 @@ date: 2022-04-17 17:01:44
 
 ### 什么是Promise
 
-Promise是异步编程的一个解决方案：从语法上讲它是一个对象，可以获取到异步操作的消息，从本意上讲，它是一个承诺，承诺过一段时间后它会给你一个结果。Promise有三种状态：pending(等待)，fulilled(成功)，rejected(失败)，状态一旦改变就不会再变，创建Promise后会立即执行。
+Promise是异步编程的一个解决方案：从语法上讲它是一个对象，可以获取到异步操作的消息，从本意上讲，它是一个承诺，承诺过一段时间后它会给你一个结果。Promise有三种状态：pending(等待)，fulfilled(成功)，rejected(失败)，状态一旦改变就不会再变，创建Promise后会立即执行。
 
 ### 为什么要使用Promise
 
@@ -52,7 +52,7 @@ new Promise(请求1)
 
 类方法，该方法返回一个以 value 值解析后的 Promise 对象
 
-1、如果这个值是个 thenable（即带有 then 方法），返回的 Promise 对象会“跟随”这个 thenable 的对象，采用它的最终状态（指 resolved/rejected/pending）
+1、如果这个值是个 thenable（即带有 then 方法），返回的 Promise 对象会“跟随”这个 thenable 的对象，采用它的最终状态（指fulfilled/rejected/pending）
 
 2、如果传入的 value 本身就是 Promise 对象，则该对象作为 Promise.resolve 方法的返回值返回。
 
